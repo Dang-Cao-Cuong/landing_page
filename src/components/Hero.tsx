@@ -43,8 +43,7 @@ export function Hero() {
 
                     <p className="max-w-3xl mx-auto text-lg sm:text-xl md:text-2xl text-zinc-300 leading-relaxed font-light">
                         {t.rich('subtitle', {
-                            bold: (chunks) => <span className="text-white font-medium">{chunks}</span>,
-                            br: () => <br className="hidden sm:block" />
+                            bold: (chunks) => <span className="text-white font-medium">{chunks}</span>
                         })}
                     </p>
 

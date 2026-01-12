@@ -83,9 +83,7 @@ export function Impact() {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-qwaste-dark/50" />
                 <div className="relative z-10 space-y-6">
                     <h3 className="text-2xl md:text-3xl font-bold leading-tight">
-                        {t.rich('quote', {
-                            br: () => <br />
-                        })}
+                        {t.rich('quote')}
                     </h3>
                     <p className="text-lg text-zinc-300 max-w-2xl mx-auto">
                         {t.rich('quoteDesc', {

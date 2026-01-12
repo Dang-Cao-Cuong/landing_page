@@ -8,7 +8,7 @@
     "Hero": {
         "tagline": "Comprehensive Digital Manufacturing Solution",
         "title": "QWaste <accent>Digital Factory</accent>",
-        "subtitle": "Turn <bold>Time</bold> into asset.<br></br>Turn <bold>Data</bold> into action.",
+        "subtitle": "Turn <bold>Time</bold> into asset. Turn <bold>Data</bold> into action.",
         "explore": "Explore Solution",
         "contact": "Contact Team",
         "realtime": "Real-time Monitoring",
@@ -78,11 +78,11 @@
         "row5Factor": "Revenue",
         "row5Direct": "Increased productivity & output",
         "row5Impact": "Sustainable revenue increase",
-        "quote": "“QWaste is not just software<br></br>but a time optimization strategy for manufacturing businesses.”",
+        "quote": "“QWaste is not just software but a time optimization strategy for manufacturing businesses.”",
         "quoteDesc": "Helping businesses <bold>SEE - UNDERSTAND - ACT</bold> on real data, thereby increasing productivity, reducing costs, and growing sustainably."
     },
     "Footer": {
-        "tagline": "Turn time into asset,<br></br>Turn data into action.",
+        "tagline": "Turn time into asset, Turn data into action.",
         "solution": "Solution",
         "company": "Company",
         "contact": "Contact",

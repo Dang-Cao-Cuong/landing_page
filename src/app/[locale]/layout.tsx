@@ -16,6 +16,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "QWaste Digital Factory",
   description: "Digital Manufacturing Solution",
+  icons: {
+    icon: "/LogoIIC.svg",
+  },
 };
 
 export default async function RootLayout({

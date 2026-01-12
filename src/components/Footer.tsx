@@ -17,9 +17,7 @@ export function Footer() {
                         <span>QWaste</span>
                     </div>
                     <p className="text-zinc-400 text-sm leading-relaxed">
-                        {t.rich('tagline', {
-                            br: () => <br />
-                        })}
+                        {t.rich('tagline')}
                     </p>
                 </div>
 
