@@ -18,10 +18,27 @@ export function ConsultationForm() {
         e.preventDefault();
         setStatus("submitting");
 
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        try {
+            const response = await fetch('/api/consultation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formState),
+            });
 
-        setStatus("success");
+            if (!response.ok) {
+                throw new Error('Submission failed');
+            }
+
+            setStatus("success");
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            // Optionally handle error state here, for now just reset to idle or show error
+            // For simplicity in this demo, we might just stay in submitting or go back to idle
+            alert("Có lỗi xảy ra, vui lòng thử lại sau.");
+            setStatus("idle");
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
