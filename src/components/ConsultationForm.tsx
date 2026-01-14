@@ -2,22 +2,17 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle2, Loader2 } from "lucide-react";
+import { Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from 'next-intl';
+import { Form, Input, Button, Result, message } from 'antd';
 
 export function ConsultationForm() {
     const t = useTranslations('Form');
-    const [formState, setFormState] = useState({
-        name: "",
-        phone: "",
-        email: "",
-        message: ""
-    });
     const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+    const [form] = Form.useForm();
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const onFinish = async (values: any) => {
         setStatus("submitting");
 
         try {
@@ -26,138 +21,98 @@ export function ConsultationForm() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formState),
+                body: JSON.stringify(values),
             });
 
             if (!response.ok) {
-                throw new Error('Submission failed');
+                throw new Error('Failed to submit');
             }
 
             setStatus("success");
+            message.success(t('success'));
         } catch (error) {
             console.error('Error submitting form:', error);
-            // Optionally handle error state here, for now just reset to idle or show error
-            // For simplicity in this demo, we might just stay in submitting or go back to idle
-            alert(t('error'));
+            message.error(t('error'));
             setStatus("idle");
         }
     };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormState(prev => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }));
+    const handleReset = () => {
+        setStatus("idle");
+        form.resetFields();
     };
+
+    if (status === "success") {
+        return (
+            <div className="w-full max-w-md mx-auto bg-white/80 backdrop-blur-xl shadow-2xl shadow-navy/20 border border-white rounded-2xl p-6 md:p-8">
+                <Result
+                    status="success"
+                    title={t('success')}
+                    subTitle={t('subtitle')}
+                    extra={[
+                        <Button type="primary" key="console" onClick={handleReset}>
+                            {t('submit')}
+                        </Button>,
+                    ]}
+                />
+            </div>
+        )
+    }
 
     return (
         <div className="w-full max-w-md mx-auto bg-white/80 backdrop-blur-xl shadow-2xl shadow-navy/20 border border-white rounded-2xl p-6 md:p-8">
-            <AnimatePresence mode="wait">
-                {status === "success" ? (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="flex flex-col items-center text-center space-y-4 py-8"
+            <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-zinc-900 mb-2">{t('title')}</h3>
+                <p className="text-sm text-zinc-600">{t('subtitle')}</p>
+            </div>
+
+            <Form
+                form={form}
+                layout="vertical"
+                onFinish={onFinish}
+                size="large"
+                requiredMark={false}
+            >
+                <Form.Item
+                    name="name"
+                    rules={[{ required: true, message: t('name') }]}
+                >
+                    <Input placeholder={t('name')} className="!bg-soft !border-blue-100 focus:!border-cobalt hover:!border-blue-400" />
+                </Form.Item>
+
+                <Form.Item
+                    name="phone"
+                    rules={[{ required: true, message: t('phone') }]}
+                >
+                    <Input placeholder={t('phone')} type="tel" className="!bg-soft !border-blue-100 focus:!border-cobalt hover:!border-blue-400" />
+                </Form.Item>
+
+                <Form.Item
+                    name="email"
+                    rules={[{ required: true, type: 'email', message: t('email') }]}
+                >
+                    <Input placeholder={t('email')} className="!bg-soft !border-blue-100 focus:!border-cobalt hover:!border-blue-400" />
+                </Form.Item>
+
+                <Form.Item
+                    name="message"
+                >
+                    <Input.TextArea rows={3} placeholder={t('message')} className="!bg-soft !border-blue-100 focus:!border-cobalt hover:!border-blue-400 !resize-none" />
+                </Form.Item>
+
+                <Form.Item className="mb-0">
+                    <Button
+                        type="primary"
+                        htmlType="submit"
+                        block
+                        loading={status === "submitting"}
+                        icon={status !== "submitting" && <Send className="w-4 h-4" />}
+                        className="bg-cobalt hover:!bg-navy font-bold shadow-lg shadow-cobalt/20 h-10"
                     >
-                        <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
-                            <CheckCircle2 className="w-8 h-8 text-green-600" />
-                        </div>
-                        <h3 className="text-xl font-bold text-zinc-900">{t('success')}</h3>
-                        <p className="text-zinc-600">
-                            {t('subtitle')}
-                        </p>
-                        <button
-                            onClick={() => {
-                                setStatus("idle");
-                                setFormState({ name: "", phone: "", email: "", message: "" });
-                            }}
-                            className="mt-4 text-sm text-cobalt hover:text-navy transition-colors font-medium"
-                        >
-                            {t('submit')}
-                        </button>
-                    </motion.div>
-                ) : (
-                    <motion.form
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onSubmit={handleSubmit}
-                        className="space-y-4"
-                    >
-                        <div className="text-center mb-6">
-                            <h3 className="text-xl font-bold text-zinc-900 mb-2">{t('title')}</h3>
-                            <p className="text-sm text-zinc-600">{t('subtitle')}</p>
-                        </div>
-
-                        <div className="space-y-4">
-                            <div>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    required
-                                    placeholder={t('name')}
-                                    value={formState.name}
-                                    onChange={handleChange}
-                                    className="w-full bg-soft border border-blue-100 rounded-lg px-4 py-3 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt transition-all"
-                                />
-                            </div>
-
-                            <div>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    required
-                                    placeholder={t('phone')}
-                                    value={formState.phone}
-                                    onChange={handleChange}
-                                    className="w-full bg-soft border border-blue-100 rounded-lg px-4 py-3 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt transition-all"
-                                />
-                            </div>
-
-                            <div>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    required
-                                    placeholder={t('email')}
-                                    value={formState.email}
-                                    onChange={handleChange}
-                                    className="w-full bg-soft border border-blue-100 rounded-lg px-4 py-3 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt transition-all"
-                                />
-                            </div>
-
-                            <div>
-                                <textarea
-                                    name="message"
-                                    rows={3}
-                                    placeholder={t('message')}
-                                    value={formState.message}
-                                    onChange={handleChange}
-                                    className="w-full bg-soft border border-blue-100 rounded-lg px-4 py-3 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-cobalt focus:ring-1 focus:ring-cobalt transition-all resize-none"
-                                />
-                            </div>
-                        </div>
-
-                        <button
-                            type="submit"
-                            disabled={status === "submitting"}
-                            className="w-full flex items-center justify-center gap-2 bg-cobalt text-white font-bold py-3 px-6 rounded-lg hover:bg-navy transition-colors disabled:opacity-70 disabled:cursor-not-allowed mt-6 shadow-lg shadow-cobalt/20"
-                        >
-                            {status === "submitting" ? (
-                                <>
-                                    <Loader2 className="w-5 h-5 animate-spin" />
-                                    {t('submitting')}
-                                </>
-                            ) : (
-                                <>
-                                    {t('submit')}
-                                    <Send className="w-4 h-4" />
-                                </>
-                            )}
-                        </button>
-                    </motion.form>
-                )}
-            </AnimatePresence>
+                        {status === "submitting" ? t('submitting') : t('submit')}
+                    </Button>
+                </Form.Item>
+            </Form>
         </div>
     );
 }

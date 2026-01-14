@@ -1,21 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --color-qwaste: #1155CC;
-  --color-qwaste-light: #2A0896;
-  --color-qwaste-dark: #0B347D;
-  --color-qwaste-accent: #00E0FF;
+  --color-qwaste: #0F172A;
+  /* Navy Bold */
+  --color-qwaste-light: #1D4ED8;
+  /* Cobalt Bold */
+  --color-qwaste-dark: #020617;
+  /* Darkest Navy */
+  --color-qwaste-accent: #2563EB;
+  /* Bright Action Blue */
 
-  --color-cobalt: #1155CC;
-  --color-navy: #0B2545;
-  --color-soft: #EFF6FF;
+  --color-cobalt: #1D4ED8;
+  /* Cobalt Bold */
+  --color-navy: #0F172A;
+  /* Navy Bold */
+  --color-soft: #F8FAFC;
+  /* Slate-50 - Crisp White/Grey */
 
-  --color-bg-section-dark: #09090b;
-  /* zinc-950 */
-  --color-bg-section-light: #fafafa;
-  /* zinc-50 */
-  --color-bg-footer: #09090b;
-  /* zinc-950 */
+  --color-bg-section-dark: #020617;
+  /* User Requested Footer Color */
+  --color-bg-section-light: #F8FAFC;
+
+  --color-bg-footer: #020617;
+
+  --color-action-blue: #2563EB;
+  --color-action-orange: #EA580C;
+
+  --color-text-title: #111827;
+  --color-text-body: #374151;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
@@ -48,7 +60,11 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-bg-section-light);
+  /* mapped to Slate-50 in previous step, checking... actually let's just hardcode slate-50 equivalent or ensure variable is correct. User said Slate-50. Reference raw css if needed but utility is better. */
+  background-color: #f8fafc;
+  /* Slate-50 */
+  color: #0f172a;
+  /* Slate-900 */
   font-family: var(--font-sans);
 }

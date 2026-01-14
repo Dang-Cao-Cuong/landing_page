@@ -2,6 +2,7 @@
 
 import { Section } from "./Section";
 import { Check } from "lucide-react";
+import { Table, Card } from "antd";
 import { ConsultationForm } from "./ConsultationForm";
 import { useTranslations } from 'next-intl';
 
@@ -33,58 +34,64 @@ export function Impact() {
                 </div>
 
                 {/* Desktop Table */}
-                <div className="hidden md:block overflow-x-auto rounded-3xl border border-blue-100 bg-white shadow-2xl shadow-blue-900/10 hover:shadow-blue-900/20 transition-all duration-500">
-                    <table className="w-full min-w-[600px] border-collapse">
-                        <thead>
-                            <tr className="bg-blue-50/80 border-b border-blue-100">
-                                <th className="py-6 px-8 text-left text-cobalt font-bold uppercase text-sm tracking-widest">{t('headerFactor')}</th>
-                                <th className="py-6 px-8 text-left text-cobalt font-bold uppercase text-sm tracking-widest">{t('headerDirect')}</th>
-                                <th className="py-6 px-8 text-left text-cobalt font-bold uppercase text-sm tracking-widest">{t('headerImpact')}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data.map((row, idx) => (
-                                <tr key={idx} className="group border-b border-blue-50 last:border-0 hover:bg-blue-50/30 transition-colors duration-300">
-                                    <td className="py-6 px-8 font-bold text-navy text-xl group-hover:text-cobalt transition-colors">
-                                        {row.factor}
-                                    </td>
-                                    <td className="py-6 px-8 text-slate-600 font-medium text-lg">
-                                        {row.direct}
-                                    </td>
-                                    <td className="py-6 px-8 text-navy">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center group-hover:bg-cobalt group-hover:scale-110 transition-all duration-300">
-                                                <Check className="w-5 h-5 text-cobalt group-hover:text-white transition-colors" />
-                                            </div>
-                                            <span className="font-bold text-cobalt text-lg">{row.impact}</span>
+                <div className="hidden md:block">
+                    <Table
+                        dataSource={data}
+                        pagination={false}
+                        rowKey="factor"
+                        className="shadow-xl shadow-blue-900/5 rounded-3xl overflow-hidden [&_.ant-table-thead_th]:!bg-blue-50/80 [&_.ant-table-thead_th]:!text-cobalt [&_.ant-table-thead_th]:!font-bold [&_.ant-table-thead_th]:uppercase [&_.ant-table-thead_th]:tracking-widest"
+                        columns={[
+                            {
+                                title: t('headerFactor'),
+                                dataIndex: 'factor',
+                                key: 'factor',
+                                className: 'font-bold text-navy text-lg py-6 px-8',
+                            },
+                            {
+                                title: t('headerDirect'),
+                                dataIndex: 'direct',
+                                key: 'direct',
+                                className: 'text-slate-600 font-medium text-lg py-6 px-8',
+                            },
+                            {
+                                title: t('headerImpact'),
+                                key: 'impact',
+                                render: (_: any, record: { impact: string }) => (
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-5 h-5 text-cobalt" />
                                         </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                                        <span className="font-bold text-cobalt text-lg">{record.impact}</span>
+                                    </div>
+                                ),
+                                className: 'py-6 px-8'
+                            },
+                        ]}
+                    />
                 </div>
 
                 {/* Mobile Cards */}
-                <div className="md:hidden space-y-4">
+                <div className="md:hidden">
                     {data.map((row, idx) => (
-                        <div key={idx} className="bg-white border border-blue-100 rounded-2xl p-6 space-y-4 shadow-lg shadow-blue-900/5 hover:shadow-blue-900/10 transition-all duration-300">
-                            <div className="flex items-center justify-between border-b border-blue-50 pb-4">
-                                <h3 className="text-xl font-bold text-navy">{row.factor}</h3>
-                                <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-                                    <Check className="w-5 h-5 text-cobalt" />
+                        <div key={idx} className="mb-8 last:mb-0">
+                            <Card className="border-blue-100 shadow-md shadow-blue-900/5 !rounded-2xl" styles={{ body: { padding: '1.5rem' } }}>
+                                <div className="flex items-center justify-between border-b border-blue-50 pb-4 mb-4">
+                                    <h3 className="text-xl font-bold text-navy">{row.factor}</h3>
+                                    <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
+                                        <Check className="w-5 h-5 text-cobalt" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="space-y-4 pt-2">
-                                <div>
-                                    <div className="text-xs text-cobalt uppercase font-bold mb-2 tracking-wider">{t('headerDirect')}</div>
-                                    <div className="text-slate-700 font-medium">{row.direct}</div>
+                                <div className="space-y-4">
+                                    <div>
+                                        <div className="text-xs text-cobalt uppercase font-bold mb-2 tracking-wider">{t('headerDirect')}</div>
+                                        <div className="text-slate-700 font-medium">{row.direct}</div>
+                                    </div>
+                                    <div>
+                                        <div className="text-xs text-green-600 uppercase font-bold mb-2 tracking-wider">{t('headerImpact')}</div>
+                                        <div className="text-cobalt font-bold text-lg">{row.impact}</div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <div className="text-xs text-cobalt uppercase font-bold mb-2 tracking-wider">{t('headerImpact')}</div>
-                                    <div className="text-cobalt font-bold text-lg">{row.impact}</div>
-                                </div>
-                            </div>
+                            </Card>
                         </div>
                     ))}
                 </div>

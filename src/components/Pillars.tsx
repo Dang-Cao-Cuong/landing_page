@@ -2,6 +2,7 @@
 
 import { Section } from "./Section";
 import { ArrowRight, Clock, Gauge, DollarSign, Trophy, TrendingUp } from "lucide-react";
+import { Card } from "antd";
 import { useTranslations } from 'next-intl';
 
 export function Pillars() {
@@ -58,17 +59,17 @@ export function Pillars() {
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
                     {pillars.map((item, index) => (
                         <div key={index} className="relative group">
-                            <div className="bg-white/40 backdrop-blur-xl border border-white/50 p-6 rounded-2xl md:min-h-[220px] flex flex-col items-center justify-center text-center gap-4 transition-all hover:bg-white/60 hover:-translate-y-2 hover:shadow-lg hover:shadow-blue-200/30">
+                            <Card
+                                hoverable
+                                className="h-full border-white/50 bg-white/40 backdrop-blur-xl shadow-lg shadow-blue-200/30 overflow-hidden"
+                                styles={{ body: { height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '1.5rem', gap: '1rem' } }}
+                            >
                                 <div className={`w-12 h-12 rounded-full bg-white/50 flex items-center justify-center ${item.color.replace('text-', 'text-opacity-80 text-')}`}>
                                     <item.icon className={`w-6 h-6 ${item.color.replace('text-', 'text-dark-')}`} />
                                 </div>
                                 <h3 className="font-bold text-xl text-navy">{item.title}</h3>
                                 <p className="text-sm text-blue-900/70">{item.desc}</p>
-
-                                {index < pillars.length - 1 && (
-                                    <ArrowRight className="md:hidden w-6 h-6 text-cobalt/30 rotate-90 my-2" />
-                                )}
-                            </div>
+                            </Card>
                         </div>
                     ))}
                 </div>

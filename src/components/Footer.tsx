@@ -1,18 +1,24 @@
 "use client";
 
-import { Disc } from "lucide-react";
+
+import Image from "next/image";
 import { useTranslations } from 'next-intl';
 
 export function Footer() {
     const t = useTranslations('Footer');
 
     return (
-        <footer className="bg-slate-900 border-t border-white/10 py-12 md:py-16 text-center md:text-left">
+        <footer className="!bg-slate-900 border-t border-white/10 py-12 md:py-16 text-center md:text-left !text-zinc-400">
             <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className="space-y-4">
                     <div className="flex items-center justify-center md:justify-start gap-2 text-white font-bold text-xl">
-                        <div className="w-8 h-8 relative rounded bg-white p-0.5">
-                            <img src="/LogoIIC.svg" alt="QWaste Logo" className="w-full h-full object-contain" />
+                        <div className="relative w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden">
+                            <Image
+                                src="/iic4.0.svg"
+                                alt="IIC 4.0 Logo"
+                                fill
+                                className="object-contain"
+                            />
                         </div>
                         <span>QWaste</span>
                     </div>
@@ -24,18 +30,18 @@ export function Footer() {
                 <div>
                     <h3 className="text-white font-semibold mb-4">{t('solution')}</h3>
                     <ul className="space-y-2 text-zinc-400 text-sm">
-                        <li><a href="#" className="hover:text-qwaste-accent transition-colors">Digital Factory</a></li>
-                        <li><a href="#" className="hover:text-qwaste-accent transition-colors">Smart Monitoring</a></li>
-                        <li><a href="#" className="hover:text-qwaste-accent transition-colors">OEE Optimization</a></li>
+                        <li><a href="#" className="hover:text-cobalt transition-colors">Digital Factory</a></li>
+                        <li><a href="#" className="hover:text-cobalt transition-colors">Smart Monitoring</a></li>
+                        <li><a href="#" className="hover:text-cobalt transition-colors">OEE Optimization</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h3 className="text-white font-semibold mb-4">{t('company')}</h3>
                     <ul className="space-y-2 text-zinc-400 text-sm">
-                        <li><a href="#" className="hover:text-qwaste-accent transition-colors">{t('about')}</a></li>
-                        <li><a href="#" className="hover:text-qwaste-accent transition-colors">{t('contact')}</a></li>
-                        <li><a href="#" className="hover:text-qwaste-accent transition-colors">{t('careers')}</a></li>
+                        <li><a href="#" className="hover:text-cobalt transition-colors">{t('about')}</a></li>
+                        <li><a href="#" className="hover:text-cobalt transition-colors">{t('contact')}</a></li>
+                        <li><a href="#" className="hover:text-cobalt transition-colors">{t('careers')}</a></li>
                     </ul>
                 </div>
 

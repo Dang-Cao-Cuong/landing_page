@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Button, Drawer } from "antd";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from 'next-intl';
@@ -65,11 +65,10 @@ export function Navbar() {
 
                     <LanguageSwitcher />
 
-                    <Link
-                        href="/#contact"
-                        className="px-5 py-2 rounded-full bg-cobalt text-white font-bold hover:bg-navy transition-colors hover:shadow-lg hover:shadow-cobalt/20"
-                    >
-                        {t('getStarted')}
+                    <Link href="/#contact">
+                        <Button type="primary" size="large" shape="round" className="font-bold h-auto py-2 px-6 shadow-lg shadow-cobalt/20 hover:!scale-105 transition-transform">
+                            {t('getStarted')}
+                        </Button>
                     </Link>
                 </nav>
 
@@ -85,33 +84,51 @@ export function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Nav */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-white/95 backdrop-blur-xl border-b border-zinc-100 overflow-hidden shadow-xl"
-                    >
-                        <div className="flex flex-col p-4 gap-4">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className="text-zinc-600 py-3 border-b border-zinc-100 hover:text-cobalt font-medium transition-colors"
-                                >
-                                    {link.label}
-                                </Link>
-                            ))}
-                            <Link href="/#contact" onClick={() => setIsOpen(false)} className="text-cobalt py-3 font-bold hover:text-navy transition-colors">
-                                {t('getStarted')}
-                            </Link>
+            {/* Mobile Nav Drawer */}
+            <Drawer
+                title={
+                    <div className="flex items-center gap-2">
+                        <div className="relative w-8 h-8">
+                            <Image
+                                src="/LogoIIC.svg"
+                                alt="QWaste Logo"
+                                fill
+                                className="object-contain"
+                            />
                         </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        <span className="text-cobalt font-bold">QWaste</span>
+                    </div>
+                }
+                placement="right"
+                onClose={() => setIsOpen(false)}
+                open={isOpen}
+                styles={{
+                    mask: { backdropFilter: 'blur(4px)' },
+                    body: { padding: 0 },
+                    wrapper: { width: 280 }
+                }}
+                className="[&_.ant-drawer-content]:!bg-white/90 [&_.ant-drawer-content]:!backdrop-blur-xl"
+            >
+                <div className="flex flex-col">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setIsOpen(false)}
+                            className="text-zinc-600 px-6 py-4 border-b border-zinc-100 hover:text-cobalt hover:bg-blue-50/50 font-medium transition-colors text-lg"
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+                    <div className="p-6">
+                        <Link href="/#contact" onClick={() => setIsOpen(false)}>
+                            <Button type="primary" block size="large" shape="round" className="font-bold h-12 text-lg shadow-lg shadow-cobalt/20">
+                                {t('getStarted')}
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
+            </Drawer>
         </header>
     );
 }

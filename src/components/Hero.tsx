@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { ArrowRight, Clock, Database, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from 'next-intl';
+import { Button, Typography } from "antd";
+
+const { Title, Paragraph } = Typography;
 
 export function Hero() {
     const t = useTranslations('Hero');
@@ -34,17 +37,20 @@ export function Hero() {
                         <span>{t('tagline')}</span>
                     </motion.div>
 
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-navy pb-2">
+                    <Title
+                        level={1}
+                        className="!text-4xl !sm:text-5xl !md:text-7xl !lg:text-8xl !font-bold !tracking-tight !text-navy !pb-2 !mb-0"
+                    >
                         {t.rich('title', {
-                            accent: (chunks) => <span className="block text-cobalt sm:inline">{chunks}</span>
+                            accent: (chunks) => <span className="text-cobalt">{chunks}</span>
                         })}
-                    </h1>
+                    </Title>
 
-                    <p className="max-w-3xl mx-auto text-lg sm:text-xl md:text-2xl text-blue-900/80 leading-relaxed font-light">
+                    <Paragraph className="!max-w-3xl !mx-auto !text-lg !sm:text-xl !md:text-2xl !text-blue-900/80 !leading-relaxed !font-light">
                         {t.rich('subtitle', {
                             bold: (chunks) => <span className="text-navy font-medium">{chunks}</span>
                         })}
-                    </p>
+                    </Paragraph>
 
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -52,18 +58,25 @@ export function Hero() {
                         transition={{ delay: 0.4, duration: 0.5 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 w-full sm:w-auto px-4 sm:px-0"
                     >
-                        <button className="group relative px-8 py-4 rounded-full bg-cobalt text-white font-bold text-lg transition-all hover:shadow-[0_0_20px_rgba(17,85,204,0.3)] hover:scale-105">
-                            <span className="relative z-10 flex items-center gap-2">
+                        <Button
+                            type="primary"
+                            size="large"
+                            shape="round"
+                            className="h-auto px-8 py-4 text-lg font-bold shadow-[0_0_20px_rgba(17,85,204,0.3)] hover:scale-105 transition-transform"
+                        >
+                            <span className="flex items-center gap-2">
                                 {t('explore')}
-                                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                                <ArrowRight className="w-5 h-5" />
                             </span>
-                        </button>
-                        <button
+                        </Button>
+                        <Button
+                            size="large"
+                            shape="round"
                             onClick={() => document.getElementById('consultation-form')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="px-8 py-4 rounded-full bg-white/50 border border-cobalt/20 text-cobalt font-semibold text-lg hover:bg-white/80 transition-colors backdrop-blur-sm shadow-sm hover:shadow"
+                            className="!h-auto !px-8 !py-4 !bg-white/50 !border-cobalt/20 !text-cobalt !font-semibold !text-lg hover:!bg-white/80 !backdrop-blur-sm shadow-sm"
                         >
                             {t('contact')}
-                        </button>
+                        </Button>
                     </motion.div>
                 </motion.div>
 

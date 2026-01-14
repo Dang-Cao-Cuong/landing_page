@@ -7,6 +7,9 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import AntdRegistry from '@/lib/AntdRegistry';
+import { ConfigProvider } from 'antd';
+import theme from '@/theme/themeConfig';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,7 +20,7 @@ export const metadata: Metadata = {
   title: "QWaste Digital Factory",
   description: "Digital Manufacturing Solution",
   icons: {
-    icon: "/LogoIIC.svg",
+    icon: "/iic4.0.svg",
   },
 };
 
@@ -26,7 +29,7 @@ export default async function RootLayout({
   params
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
 
@@ -43,9 +46,13 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={`${inter.variable} antialiased`}>
         <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          {children}
-          <Footer />
+          <AntdRegistry>
+            <ConfigProvider theme={theme}>
+              <Navbar />
+              {children}
+              <Footer />
+            </ConfigProvider>
+          </AntdRegistry>
         </NextIntlClientProvider>
       </body>
     </html>

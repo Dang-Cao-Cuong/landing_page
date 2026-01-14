@@ -2,6 +2,7 @@
 
 import { Section } from "./Section";
 import { Check, Layers, Database, BarChart3, Settings, ShieldCheck, Zap } from "lucide-react";
+import { Tooltip } from 'antd';
 import { useTranslations } from 'next-intl';
 
 export function Solution() {
@@ -73,18 +74,20 @@ export function Solution() {
                     </h2>
                     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
                         {modules.map((mod, idx) => (
-                            <div key={idx} className="relative bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex flex-col items-center gap-3 hover:-translate-y-1 transition-all group hover:border-[#1155CC] hover:shadow-md cursor-help">
-                                <div className="w-10 h-10 rounded-full bg-soft flex items-center justify-center text-cobalt group-hover:bg-cobalt group-hover:text-white transition-colors shrink-0">
-                                    <mod.icon className="w-5 h-5" />
+                            <Tooltip
+                                key={idx}
+                                title={mod.desc}
+                                color="#0F172A"
+                                trigger={["hover", "click"]}
+                                overlayInnerStyle={{ padding: '0.75rem', fontSize: '0.75rem' }}
+                            >
+                                <div className="relative bg-white p-4 rounded-xl shadow-sm border border-gray-200 flex flex-col items-center gap-3 hover:-translate-y-1 transition-all group hover:border-[#1155CC] hover:shadow-md cursor-help">
+                                    <div className="w-10 h-10 rounded-full bg-soft flex items-center justify-center text-cobalt group-hover:bg-cobalt group-hover:text-white transition-colors shrink-0">
+                                        <mod.icon className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-sm font-semibold text-navy text-center leading-tight">{mod.name}</span>
                                 </div>
-                                <span className="text-sm font-semibold text-navy text-center leading-tight">{mod.name}</span>
-
-                                {/* Hover Tooltip */}
-                                <div className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-200 invisible group-hover:visible z-20 bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 p-3 rounded-lg bg-slate-900 text-white text-xs text-center shadow-xl pointer-events-none">
-                                    {mod.desc}
-                                    <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-slate-900" />
-                                </div>
-                            </div>
+                            </Tooltip>
                         ))}
                     </div>
                 </div>
