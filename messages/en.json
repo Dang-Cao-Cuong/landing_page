@@ -27,6 +27,7 @@
         "smartFactoryDesc": "Advanced nations have moved to the Smart Manufacturing stage, where every second of operation carries economic value."
     },
     "Pillars": {
+        "badge": "Core Values",
         "title": "5 Strategic Pillars",
         "subtitle": "The tight link between operational efficiency and business growth",
         "time": "Time",
@@ -41,6 +42,7 @@
         "revenueDesc": "Revenue growth"
     },
     "Solution": {
+        "approachBadge": "Our Approach",
         "goalsTitle": "Project Goals",
         "goal1": "Standardize production and operational processes",
         "goal2": "Automate real-time data collection",
@@ -49,6 +51,7 @@
         "goal5": "Support data-driven decision making",
         "frameworkTitle": "Smart Factory Framework",
         "modulesTitle": "7 Functional Modules",
+        "modulesDesc": "Comprehensive modules designed for total factory control",
         "modCollection": "Data Collection",
         "modMonitoring": "Monitoring",
         "modAnalytics": "Analytics",
