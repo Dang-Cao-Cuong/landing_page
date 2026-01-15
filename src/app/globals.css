@@ -1,44 +1,66 @@
 @import "tailwindcss";
 
-@theme {
-  --color-qwaste: #0F172A;
-  /* Navy Bold */
-  --color-qwaste-light: #1D4ED8;
-  /* Cobalt Bold */
-  --color-qwaste-dark: #020617;
-  /* Darkest Navy */
-  --color-qwaste-accent: #2563EB;
-  /* Bright Action Blue */
+/* stylelint-disable-next-line */
+:root {
+  /* New Blue Theme Palette */
+  --color-primary: #1e50e1;
+  --color-primary-hover: #153bb5;
+  --color-primary-light: #5678e8;
 
-  --color-cobalt: #1D4ED8;
-  /* Cobalt Bold */
+  /* Background Colors */
+  --color-bg-surface: #F0F4FF;
+  --color-bg-card: #FFFFFF;
+  --color-dark-navy: #0B1B45;
+
+  /* Accent Blues */
+  --color-blue-50: #EFF6FF;
+  --color-blue-100: #DBEAFE;
+
+  /* Legacy compatibility */
+  --color-cobalt: #1e50e1;
   --color-navy: #0F172A;
-  /* Navy Bold */
   --color-soft: #F8FAFC;
-  /* Slate-50 - Crisp White/Grey */
 
-  --color-bg-section-dark: #020617;
-  /* User Requested Footer Color */
-  --color-bg-section-light: #F8FAFC;
+  /* Section backgrounds */
+  --color-bg-section-dark: #0B1B45;
+  --color-bg-section-light: #F0F4FF;
+  --color-bg-footer: #0B1B45;
 
-  --color-bg-footer: #020617;
-
-  --color-action-blue: #2563EB;
+  /* Action colors */
+  --color-action-blue: #1e50e1;
   --color-action-orange: #EA580C;
 
-  --color-text-title: #111827;
-  --color-text-body: #374151;
+  /* Text colors */
+  --color-text-light: #F8FAFC;
+  --color-text-dark: #0F172A;
+  --color-text-muted: #CBD5E1;
+  --color-text-muted-dark: #475569;
+  --color-text-title: #FFFFFF;
+  --color-text-body: #E2E8F0;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Custom Shadow Utilities - Blue Tinted */
+.shadow-blue {
+  box-shadow: 0 4px 12px rgba(30, 80, 225, 0.15);
+}
+
+.shadow-blue-glow {
+  box-shadow: 0 0 20px rgba(30, 80, 225, 0.5);
+}
+
+.shadow-blue-lg {
+  box-shadow: 0 10px 25px rgba(30, 80, 225, 0.15);
+}
+
 .bg-mesh-aurora {
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #1e50e1 0%, #5678e8 100%);
   background-image:
-    radial-gradient(at 0% 0%, rgba(17, 85, 204, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(17, 85, 204, 0.1) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(168, 85, 247, 0.1) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, rgba(30, 80, 225, 0.4) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(86, 120, 232, 0.3) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(30, 80, 225, 0.3) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(86, 120, 232, 0.3) 0px, transparent 50%);
 }
 
 .bg-grid-pattern {
@@ -60,11 +82,10 @@
 }
 
 body {
-  background: var(--color-bg-section-light);
-  /* mapped to Slate-50 in previous step, checking... actually let's just hardcode slate-50 equivalent or ensure variable is correct. User said Slate-50. Reference raw css if needed but utility is better. */
-  background-color: #f8fafc;
-  /* Slate-50 */
-  color: #0f172a;
-  /* Slate-900 */
+  background: var(--color-bg-surface);
+  background-color: #F0F4FF;
+  /* Light blue surface background */
+  color: var(--color-text-dark);
+  /* Dark text for light backgrounds */
   font-family: var(--font-sans);
 }

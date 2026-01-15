@@ -12,10 +12,10 @@ export function Hero() {
     const t = useTranslations('Hero');
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-mesh-aurora text-navy selection:bg-cobalt/20">
-            {/* Background gradients */}
-            <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-cobalt/5 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[500px] bg-sky-200/20 rounded-full blur-[100px] pointer-events-none" />
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#F0F4FF] via-white to-[#E6EEFF] selection:bg-blue-100">
+            {/* Subtle gradient orbs */}
+            <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-[#1e50e1]/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[500px] bg-[#5678e8]/10 rounded-full blur-[100px] pointer-events-none" />
 
             <div className="container relative z-10 px-4 md:px-6 text-center pt-20">
                 <motion.div
@@ -39,14 +39,31 @@ export function Hero() {
 
                     <Title
                         level={1}
-                        className="!text-4xl !sm:text-5xl !md:text-7xl !lg:text-8xl !font-bold !tracking-tight !text-navy !pb-2 !mb-0"
+                        className="drop-shadow-sm"
+                        style={{
+                            fontSize: 'clamp(2.25rem, 5vw, 8rem)',
+                            fontWeight: 800,
+                            letterSpacing: '-0.025em',
+                            color: '#1e50e1',
+                            paddingBottom: '0.5rem',
+                            marginBottom: 0,
+                            lineHeight: 1.1
+                        }}
                     >
                         {t.rich('title', {
-                            accent: (chunks) => <span className="text-cobalt">{chunks}</span>
+                            accent: (chunks) => <span className="text-zinc-800">{chunks}</span>
                         })}
                     </Title>
 
-                    <Paragraph className="!max-w-3xl !mx-auto !text-lg !sm:text-xl !md:text-2xl !text-blue-900/80 !leading-relaxed !font-light">
+                    <Paragraph
+                        className="!max-w-3xl !mx-auto"
+                        style={{
+                            fontSize: 'clamp(1.125rem, 2.0vw, 2.5rem)',
+                            color: 'rgba(30, 58, 138, 0.8)',
+                            lineHeight: 1.6,
+                            fontWeight: 300
+                        }}
+                    >
                         {t.rich('subtitle', {
                             bold: (chunks) => <span className="text-navy font-medium">{chunks}</span>
                         })}
@@ -62,7 +79,7 @@ export function Hero() {
                             type="primary"
                             size="large"
                             shape="round"
-                            className="h-auto px-8 py-4 text-lg font-bold shadow-[0_0_20px_rgba(17,85,204,0.3)] hover:scale-105 transition-transform"
+                            className="h-auto px-8 py-4 text-lg font-bold !bg-[#1e50e1] hover:!bg-[#153bb5] shadow-lg shadow-blue-500/50 hover:shadow-xl hover:shadow-blue-500/70 hover:scale-105 transition-all"
                         >
                             <span className="flex items-center gap-2">
                                 {t('explore')}

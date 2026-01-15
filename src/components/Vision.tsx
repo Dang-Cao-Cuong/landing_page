@@ -15,25 +15,24 @@ export function Vision() {
     ];
 
     return (
-        <Section id="vision" bg="soft">
+        <Section id="vision" bg="white">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div className="space-y-6">
-                    <h2 className="text-3xl md:text-4xl font-bold text-navy">
+                    <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A]">
                         {t.rich('title', {
-                            accent: (chunks) => <span className="text-cobalt">{chunks}</span>
+                            accent: (chunks) => <span className="text-[#1e50e1]">{chunks}</span>
                         })}
                     </h2>
-                    <p className="text-blue-900/70 leading-relaxed">
-                        {t('desc1')}
-                    </p>
-                    <p className="text-blue-900/70 leading-relaxed">
+                    <p className="text-[#475569] leading-relaxed">
+                        {t('desc1')}\n                    </p>
+                    <p className="text-[#475569] leading-relaxed">
                         {t.rich('desc2', {
-                            bold: (chunks) => <span className="text-navy font-medium">{chunks}</span>
+                            bold: (chunks) => <span className="text-[#0F172A] font-medium">{chunks}</span>
                         })}
                     </p>
 
-                    <Card variant="borderless" className="!bg-white/70 !backdrop-blur-lg !shadow-sm !border !border-white/40 !rounded-xl">
-                        <h3 className="font-semibold text-navy mb-4">{t('boxTitle')}</h3>
+                    <Card variant="borderless" className="!bg-gray-50 !shadow-md !border !border-gray-200 !rounded-xl">
+                        <h3 className="font-semibold text-[#0F172A] mb-4">{t('boxTitle')}</h3>
                         <ul className="space-y-3">
                             {[
                                 t('list1'),
@@ -41,8 +40,8 @@ export function Vision() {
                                 t('list3'),
                                 t('list4')
                             ].map((item, i) => (
-                                <li key={i} className="flex items-start gap-3 text-sm text-blue-800">
-                                    <CheckCircle2 className="w-5 h-5 text-cobalt shrink-0" />
+                                <li key={i} className="flex items-start gap-3 text-sm text-[#475569]">
+                                    <CheckCircle2 className="w-5 h-5 text-[#1e50e1] shrink-0" />
                                     {item}
                                 </li>
                             ))}

@@ -12,13 +12,13 @@ interface SectionProps {
 
 export function Section({ id, className, children, bg = "dark" }: SectionProps) {
     const bgStyles = {
-        dark: "bg-bg-section-dark text-white",
-        light: "bg-bg-section-light text-zinc-900",
-        qwaste: "bg-qwaste-dark text-white",
+        dark: "bg-[#0B1B45] text-white",      // Dark navy
+        light: "bg-[#F0F4FF] text-zinc-900",  // Light blue surface
+        qwaste: "bg-[#0B1B45] text-white",    // Dark navy
         white: "bg-white text-zinc-900",
-        soft: "bg-soft text-zinc-900",
-        cobalt: "bg-cobalt text-white",
-        navy: "bg-navy text-white",
+        soft: "bg-[#F8FAFC] text-zinc-900",   // Soft gray
+        cobalt: "bg-[#1e50e1] text-white",    // Primary blue
+        navy: "bg-[#0F172A] text-white",
         aurora: "bg-mesh-aurora text-zinc-900",
     };
 

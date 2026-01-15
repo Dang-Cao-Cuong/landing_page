@@ -17,7 +17,7 @@ export function Impact() {
     ];
 
     return (
-        <section id="impact" className="relative pt-20 pb-0 md:pt-32 md:pb-0 overflow-visible bg-gradient-to-b from-blue-100 to-white">
+        <section id="impact" className="relative pt-20 pb-10 md:pt-32 md:pb-10 overflow-visible bg-gradient-to-b from-blue-100 to-white">
             {/* Noise/Grid Pattern Overlay */}
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.03] pointer-events-none" />
 
