@@ -27,6 +27,7 @@
         "smartFactoryDesc": "Các quốc gia tiên tiến đã bước sang giai đoạn Sản xuất thông minh, nơi mỗi giây vận hành đều mang giá trị kinh tế."
     },
     "Pillars": {
+        "badge": "Giá Trị Cốt Lõi",
         "title": "5 Trụ Cột Giá Trị",
         "subtitle": "Mối liên kết chặt chẽ giữa hiệu quả vận hành và tăng trưởng doanh nghiệp",
         "time": "Thời gian",
@@ -41,6 +42,7 @@
         "revenueDesc": "Tăng trưởng doanh thu"
     },
     "Solution": {
+        "approachBadge": "Phương Pháp",
         "goalsTitle": "Mục tiêu dự án",
         "goal1": "Chuẩn hóa quy trình sản xuất và vận hành",
         "goal2": "Tự động hóa thu thập dữ liệu thời gian thực",
@@ -49,6 +51,7 @@
         "goal5": "Hỗ trợ ra quyết định dựa trên dữ liệu",
         "frameworkTitle": "Smart Factory Framework",
         "modulesTitle": "7 Module Chức Năng",
+        "modulesDesc": "Các module toàn diện được thiết kế để kiểm soát toàn bộ nhà máy",
         "modCollection": "Thu thập Dữ liệu",
         "modMonitoring": "Giám sát",
         "modAnalytics": "Phân tích",

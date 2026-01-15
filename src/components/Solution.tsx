@@ -27,71 +27,104 @@ export function Solution() {
     ];
 
     return (
-        <Section id="solution" bg="white">
-            <div className="space-y-16">
-                {/* Goals */}
+        // THAY ĐỔI 1: Áp dụng màu nền #004094 (Royal Blue) đồng bộ với Vision
+        <section id="solution" className="relative py-20 md:py-32 bg-[#004094] overflow-hidden">
+
+            {/* Họa tiết nền: Điều chỉnh sang tông trắng mờ để hợp với nền xanh mới */}
+            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 pointer-events-none mix-blend-overlay" />
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[120px] pointer-events-none" />
+
+            <div className="container mx-auto px-4 relative z-10 space-y-20">
+                {/* Goals & Framework Grid */}
                 <div className="grid md:grid-cols-2 gap-16 lg:gap-20 items-center">
+
+                    {/* Left Column: Goals */}
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-cobalt">
+                        {/* Tagline: Chuyển sang style trắng/trong suốt giống Vision */}
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-wider mb-4">
+                            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                            {t('approachBadge')}
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white">
                             {t('goalsTitle')}
                         </h2>
                         <div className="space-y-4">
                             {goals.map((goal, idx) => (
-                                <div key={idx} className="flex items-start gap-4 p-4 rounded-lg bg-white/50 backdrop-blur-sm border border-blue-100 hover:border-cobalt/50 transition-colors shadow-sm">
-                                    <div className="w-6 h-6 rounded-full bg-blue-50 flex items-center justify-center shrink-0 mt-0.5">
-                                        <Check className="w-4 h-4 text-cobalt" />
+                                // Goal Cards: Glassmorphism trên nền xanh
+                                <div key={idx} className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-colors duration-300">
+                                    <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
+                                        <Check className="w-3.5 h-3.5 text-blue-200" />
                                     </div>
-                                    <span className="text-navy font-medium">{goal}</span>
+                                    <span className="text-white/90 font-medium leading-relaxed">{goal}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <div className="relative h-full min-h-[400px] bg-[#0B1B45] rounded-2xl overflow-hidden p-8 shadow-xl flex flex-col justify-center">
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-                        <h3 className="text-2xl font-bold mb-6 relative z-10 text-white">{t('frameworkTitle')}</h3>
-                        <div className="space-y-6 relative z-10">
-                            <dl className="space-y-2 border-l-2 border-[#1e50e1] pl-4">
-                                <dt className="text-white/80 font-semibold text-sm">Connectivity</dt>
-                                <dd className="text-white/90">OPC UA / MQTT / Modbus TCP</dd>
+                    {/* Right Column: Framework Card */}
+                    {/* THAY ĐỔI 2: Sử dụng màu nền đậm #003070 cho khối này (giống khung Carousel bên Vision) */}
+                    <div className="relative h-full min-h-[450px] bg-[#003070] rounded-3xl overflow-hidden p-8 lg:p-10 shadow-2xl border border-white/10 flex flex-col justify-center group">
+                        {/* Gradient overlay nhẹ */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50" />
+
+                        <h3 className="text-2xl font-bold mb-8 relative z-10 text-white flex items-center gap-3">
+                            {t('frameworkTitle')}
+                            <div className="h-px flex-1 bg-gradient-to-r from-white/30 to-transparent" />
+                        </h3>
+
+                        <div className="space-y-8 relative z-10">
+                            {/* Các dòng text bên trong dùng màu trắng và blue-200 */}
+                            <dl className="space-y-2 border-l-2 border-white/20 pl-6 transition-all group-hover:border-white/50">
+                                <dt className="text-blue-200 font-semibold text-sm uppercase tracking-wider">Connectivity</dt>
+                                <dd className="text-white text-lg font-medium">OPC UA / MQTT / Modbus TCP</dd>
                             </dl>
-                            <dl className="space-y-2 border-l-2 border-[#1e50e1] pl-4">
-                                <dt className="text-white/80 font-semibold text-sm">Data Hub</dt>
-                                <dd className="text-white/90">SQL Server / InfluxDB</dd>
+                            <dl className="space-y-2 border-l-2 border-white/20 pl-6 transition-all group-hover:border-white/50">
+                                <dt className="text-blue-200 font-semibold text-sm uppercase tracking-wider">Data Hub</dt>
+                                <dd className="text-white text-lg font-medium">SQL Server / InfluxDB</dd>
                             </dl>
-                            <dl className="space-y-2 border-l-2 border-[#1e50e1] pl-4">
-                                <dt className="text-white/80 font-semibold text-sm">Platform</dt>
-                                <dd className="text-white/90">Real-time Digital Twin</dd>
+                            <dl className="space-y-2 border-l-2 border-white/20 pl-6 transition-all group-hover:border-white/50">
+                                <dt className="text-blue-200 font-semibold text-sm uppercase tracking-wider">Platform</dt>
+                                <dd className="text-white text-lg font-medium">Real-time Digital Twin</dd>
                             </dl>
                         </div>
                     </div>
                 </div>
 
                 {/* Modules Grid */}
-                <div className="text-center space-y-8">
-                    <h2 className="text-3xl font-bold text-cobalt">
-                        {t('modulesTitle')}
-                    </h2>
+                <div className="space-y-10">
+                    <div className="text-center">
+                        <h2 className="text-3xl font-bold text-white mb-2">
+                            {t('modulesTitle')}
+                        </h2>
+                        <p className="text-blue-100/80 max-w-2xl mx-auto">
+                            {t('modulesDesc')}
+                        </p>
+                    </div>
+
                     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
                         {modules.map((mod, idx) => (
                             <Tooltip
                                 key={idx}
                                 title={mod.desc}
-                                color="#0F172A"
+                                color="#003070" // Tooltip background đồng bộ với màu khung đậm
                                 trigger={["hover", "click"]}
-                                overlayInnerStyle={{ padding: '0.75rem', fontSize: '0.75rem' }}
+                                // Giữ nguyên overlayInnerStyle như yêu cầu
+                                overlayInnerStyle={{ padding: '0.75rem', fontSize: '0.85rem' }}
                             >
-                                <div className="relative bg-white p-4 rounded-xl shadow-md border-2 border-transparent hover:border-[#1e50e1] hover:bg-blue-50 flex flex-col items-center gap-3 hover:-translate-y-1 transition-all duration-300 group cursor-help hover:shadow-xl">
-                                    <div className="w-10 h-10 rounded-full bg-[#1e50e1]/10 flex items-center justify-center text-[#1e50e1] group-hover:scale-110 transition-transform shrink-0">
-                                        <mod.icon className="w-5 h-5" />
+                                {/* Module Card: Glassmorphism */}
+                                <div className="relative bg-white/5 backdrop-blur-sm p-4 rounded-2xl border border-white/10 hover:bg-white/20 hover:border-white/30 flex flex-col items-center gap-4 hover:-translate-y-2 transition-all duration-300 group cursor-pointer h-full justify-center min-h-[140px]">
+                                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-blue-200 group-hover:text-white group-hover:bg-white/20 transition-all">
+                                        <mod.icon className="w-6 h-6" />
                                     </div>
-                                    <span className="text-sm font-semibold text-navy text-center leading-tight">{mod.name}</span>
+                                    <span className="text-sm font-medium text-blue-100 text-center leading-tight group-hover:text-white">
+                                        {mod.name}
+                                    </span>
                                 </div>
                             </Tooltip>
                         ))}
                     </div>
                 </div>
             </div>
-        </Section>
+        </section>
     );
 }
