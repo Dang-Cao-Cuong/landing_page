@@ -1,0 +1,144 @@
+/* Container and Layout Utilities */
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .container {
+        max-width: 640px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .container {
+        max-width: 1536px;
+    }
+}
+
+/* Glassmorphism Effect */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glassLight {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(30, 80, 225, 0.2);
+}
+
+/* Blur Decorations */
+.blurDecorationLarge {
+    width: 800px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+.blurDecorationMedium {
+    width: 600px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+/* Text Utilities */
+.textCenter {
+    text-align: center;
+}
+
+.fontBold {
+    font-weight: 700;
+}
+
+.fontSemibold {
+    font-weight: 600;
+}
+
+.fontMedium {
+    font-weight: 500;
+}
+
+.fontLight {
+    font-weight: 300;
+}
+
+/* Display Utilities */
+.hidden {
+    display: none;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.inset0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/* Z-Index */
+.z0 {
+    z-index: 0;
+}
+
+.z10 {
+    z-index: 10;
+}
+
+/* Pointer Events */
+.pointerEventsNone {
+    pointer-events: none;
+}
+
+/* Overflow */
+.overflowHidden {
+    overflow: hidden;
+}
+
+/* Grid Patterns */
+.gridPattern {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+}
+
+/* Perspective for 3D effects */
+.perspective1000 {
+    perspective: 1000px;
+}

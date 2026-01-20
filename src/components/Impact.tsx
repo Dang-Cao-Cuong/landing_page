@@ -1,6 +1,5 @@
 "use client";
 
-import { Section } from "./Section";
 import { Check } from "lucide-react";
 import { Table, Card } from "antd";
 import { ConsultationForm } from "./ConsultationForm";
@@ -17,78 +16,190 @@ export function Impact() {
     ];
 
     return (
-        <section id="impact" className="relative pt-20 pb-10 md:pt-32 md:pb-10 overflow-visible bg-gradient-to-b from-blue-100 to-white">
+        <section id="impact" style={{
+            position: 'relative',
+            paddingTop: '5rem',
+            paddingBottom: '2.5rem',
+            overflow: 'visible',
+            background: 'linear-gradient(to bottom, var(--color-blue-100), white)'
+        }}>
             {/* Noise/Grid Pattern Overlay */}
-            <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.03] pointer-events-none" />
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: 'url("/grid-pattern.svg")',
+                opacity: 0.03,
+                pointerEvents: 'none'
+            }} />
 
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-navy">
+            <div style={{
+                maxWidth: '1280px',
+                margin: '0 auto',
+                padding: '0 1rem',
+                position: 'relative',
+                zIndex: 10
+            }}>
+                <div style={{
+                    textAlign: 'center',
+                    marginBottom: '4rem'
+                }}>
+                    <h2 style={{
+                        fontSize: 'clamp(1.875rem, 5vw, 2.25rem)',
+                        fontWeight: 700,
+                        marginBottom: '1rem',
+                        color: 'var(--color-navy)'
+                    }}>
                         {t.rich('title', {
-                            accent: (chunks) => <span className="text-cobalt">{chunks}</span>
+                            accent: (chunks) => <span style={{ color: 'var(--color-cobalt)' }}>{chunks}</span>
                         })}
                     </h2>
-                    <p className="text-slate-600 max-w-2xl mx-auto">
+                    <p style={{
+                        color: 'var(--color-slate-600)',
+                        maxWidth: '42rem',
+                        margin: '0 auto'
+                    }}>
                         {t('subtitle')}
                     </p>
                 </div>
 
                 {/* Desktop Table */}
-                <div className="hidden md:block">
+                <div className="impact-table-desktop">
                     <Table
                         dataSource={data}
                         pagination={false}
                         rowKey="factor"
-                        className="shadow-xl shadow-blue-900/5 rounded-3xl overflow-hidden [&_.ant-table-thead_th]:!bg-blue-50/80 [&_.ant-table-thead_th]:!text-cobalt [&_.ant-table-thead_th]:!font-bold [&_.ant-table-thead_th]:uppercase [&_.ant-table-thead_th]:tracking-widest"
+                        style={{
+                            boxShadow: '0 20px 25px -5px rgba(30, 58, 138, 0.05), 0 10px 10px -5px rgba(30, 58, 138, 0.04)',
+                            borderRadius: '1.5rem',
+                            overflow: 'hidden'
+                        }}
                         columns={[
                             {
                                 title: t('headerFactor'),
                                 dataIndex: 'factor',
                                 key: 'factor',
-                                className: 'font-bold text-navy text-lg py-6 px-8',
+                                className: 'impact-table-factor-cell',
                             },
                             {
                                 title: t('headerDirect'),
                                 dataIndex: 'direct',
                                 key: 'direct',
-                                className: 'text-slate-600 font-medium text-lg py-6 px-8',
+                                className: 'impact-table-direct-cell',
                             },
                             {
                                 title: t('headerImpact'),
                                 key: 'impact',
                                 render: (_: any, record: { impact: string }) => (
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-                                            <Check className="w-5 h-5 text-cobalt" />
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.75rem'
+                                    }}>
+                                        <div style={{
+                                            width: '2rem',
+                                            height: '2rem',
+                                            borderRadius: '50%',
+                                            background: 'var(--color-blue-100)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            flexShrink: 0
+                                        }}>
+                                            <Check style={{
+                                                width: '1.25rem',
+                                                height: '1.25rem',
+                                                color: 'var(--color-cobalt)'
+                                            }} />
                                         </div>
-                                        <span className="font-bold text-cobalt text-lg">{record.impact}</span>
+                                        <span style={{
+                                            fontWeight: 700,
+                                            color: 'var(--color-cobalt)',
+                                            fontSize: '1.125rem'
+                                        }}>{record.impact}</span>
                                     </div>
                                 ),
-                                className: 'py-6 px-8'
+                                className: 'impact-table-impact-cell'
                             },
                         ]}
                     />
                 </div>
 
                 {/* Mobile Cards */}
-                <div className="md:hidden">
+                <div className="impact-cards-mobile">
                     {data.map((row, idx) => (
-                        <div key={idx} className="mb-8 last:mb-0">
-                            <Card className="border-blue-100 shadow-md shadow-blue-900/5 !rounded-2xl" styles={{ body: { padding: '1.5rem' } }}>
-                                <div className="flex items-center justify-between border-b border-blue-50 pb-4 mb-4">
-                                    <h3 className="text-xl font-bold text-navy">{row.factor}</h3>
-                                    <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
-                                        <Check className="w-5 h-5 text-cobalt" />
+                        <div key={idx} style={{
+                            marginBottom: '2rem'
+                        }}>
+                            <Card
+                                style={{
+                                    borderColor: 'var(--color-blue-100)',
+                                    boxShadow: '0 4px 6px -1px rgba(30, 58, 138, 0.05)',
+                                    borderRadius: '1rem'
+                                }}
+                                styles={{ body: { padding: '1.5rem' } }}
+                            >
+                                <div style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    borderBottom: '1px solid var(--color-blue-50)',
+                                    paddingBottom: '1rem',
+                                    marginBottom: '1rem'
+                                }}>
+                                    <h3 style={{
+                                        fontSize: '1.25rem',
+                                        fontWeight: 700,
+                                        color: 'var(--color-navy)'
+                                    }}>{row.factor}</h3>
+                                    <div style={{
+                                        width: '2rem',
+                                        height: '2rem',
+                                        borderRadius: '50%',
+                                        background: 'var(--color-blue-50)',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }}>
+                                        <Check style={{
+                                            width: '1.25rem',
+                                            height: '1.25rem',
+                                            color: 'var(--color-cobalt)'
+                                        }} />
                                     </div>
                                 </div>
-                                <div className="space-y-4">
+                                <div style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '1rem'
+                                }}>
                                     <div>
-                                        <div className="text-xs text-cobalt uppercase font-bold mb-2 tracking-wider">{t('headerDirect')}</div>
-                                        <div className="text-slate-700 font-medium">{row.direct}</div>
+                                        <div style={{
+                                            fontSize: '0.75rem',
+                                            color: 'var(--color-cobalt)',
+                                            textTransform: 'uppercase',
+                                            fontWeight: 700,
+                                            marginBottom: '0.5rem',
+                                            letterSpacing: '0.05em'
+                                        }}>{t('headerDirect')}</div>
+                                        <div style={{
+                                            color: '#334155',
+                                            fontWeight: 500
+                                        }}>{row.direct}</div>
                                     </div>
                                     <div>
-                                        <div className="text-xs text-green-600 uppercase font-bold mb-2 tracking-wider">{t('headerImpact')}</div>
-                                        <div className="text-cobalt font-bold text-lg">{row.impact}</div>
+                                        <div style={{
+                                            fontSize: '0.75rem',
+                                            color: '#16a34a',
+                                            textTransform: 'uppercase',
+                                            fontWeight: 700,
+                                            marginBottom: '0.5rem',
+                                            letterSpacing: '0.05em'
+                                        }}>{t('headerImpact')}</div>
+                                        <div style={{
+                                            color: 'var(--color-cobalt)',
+                                            fontWeight: 700,
+                                            fontSize: '1.125rem'
+                                        }}>{row.impact}</div>
                                     </div>
                                 </div>
                             </Card>
@@ -96,42 +207,182 @@ export function Impact() {
                     ))}
                 </div>
 
-
-                <div className="mt-20 relative rounded-2xl bg-white border border-blue-100 p-8 md:p-12 text-center overflow-hidden shadow-xl shadow-cobalt/5">
-                    <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-white" />
-                    <div className="relative z-10 space-y-6">
-                        <h3 className="text-2xl md:text-3xl font-bold leading-tight text-navy">
+                <div style={{
+                    marginTop: '5rem',
+                    position: 'relative',
+                    borderRadius: '1rem',
+                    background: 'white',
+                    border: '1px solid var(--color-blue-100)',
+                    padding: '2rem',
+                    textAlign: 'center',
+                    overflow: 'hidden',
+                    boxShadow: '0 20px 25px -5px rgba(30, 80, 225, 0.05)'
+                }} className="impact-cta-section">
+                    <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(to bottom, var(--color-blue-50), white)'
+                    }} />
+                    <div style={{
+                        position: 'relative',
+                        zIndex: 10,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '1.5rem'
+                    }}>
+                        <h3 style={{
+                            fontSize: 'clamp(1.5rem, 4vw, 1.875rem)',
+                            fontWeight: 700,
+                            lineHeight: 1.25,
+                            color: 'var(--color-navy)'
+                        }}>
                             {t.rich('quote')}
                         </h3>
-                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                        <p style={{
+                            fontSize: '1.125rem',
+                            color: 'var(--color-slate-600)',
+                            maxWidth: '42rem',
+                            margin: '0 auto'
+                        }}>
                             {t.rich('quoteDesc', {
-                                bold: (chunks) => <span className="text-cobalt font-bold">{chunks}</span>
+                                bold: (chunks) => <span style={{ color: 'var(--color-cobalt)', fontWeight: 700 }}>{chunks}</span>
                             })}
                         </p>
-                        <div id="consultation-form" className="pt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch text-left">
-                            <div className="w-full min-h-[400px] h-full rounded-xl overflow-hidden border border-blue-100 bg-white relative group shadow-lg">
+                        <div id="consultation-form" style={{
+                            paddingTop: '2rem',
+                            display: 'grid',
+                            gridTemplateColumns: '1fr',
+                            gap: '2rem',
+                            alignItems: 'stretch',
+                            textAlign: 'left'
+                        }} className="impact-contact-grid">
+                            <div className="impact-map-container">
                                 <iframe
                                     src="https://maps.google.com/maps?q=Tr%C6%B0%E1%BB%9Dng%20Qu%E1%BB%91c%20t%E1%BA%BF%20Mi%E1%BB%81n%20%C4%90%C3%B4ng&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                                    className="absolute inset-0 w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
+                                    className="impact-map-iframe"
                                     style={{ border: 0 }}
                                     allowFullScreen
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"
                                 />
-                                <div className="absolute bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t border-blue-100">
-                                    <p className="text-navy font-medium text-sm flex items-center gap-2">
+                                <div style={{
+                                    position: 'absolute',
+                                    bottom: 0,
+                                    left: 0,
+                                    right: 0,
+                                    padding: '1rem',
+                                    background: 'rgba(255, 255, 255, 0.9)',
+                                    backdropFilter: 'blur(12px)',
+                                    borderTop: '1px solid var(--color-blue-100)'
+                                }}>
+                                    <p style={{
+                                        color: 'var(--color-navy)',
+                                        fontWeight: 500,
+                                        fontSize: '0.875rem',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.5rem',
+                                        margin: 0
+                                    }}>
                                         Nam Kỳ Khởi Nghĩa, Định Hoà, Thủ Dầu Một, Bình Dương
                                     </p>
                                 </div>
                             </div>
 
-                            <div className="flex justify-center lg:justify-end w-full">
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                width: '100%'
+                            }} className="impact-form-container">
                                 <ConsultationForm />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section >
+
+            <style jsx>{`
+                .impact-table-desktop {
+                    display: none;
+                }
+
+                .impact-cards-mobile {
+                    display: block;
+                }
+
+                @media (min-width: 768px) {
+                    .impact-table-desktop {
+                        display: block;
+                    }
+
+                    .impact-cards-mobile {
+                        display: none;
+                    }
+
+                    .impact-cta-section {
+                        padding: 3rem !important;
+                    }
+
+                    .impact-contact-grid {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                    }
+
+                    .impact-form-container {
+                        justify-content: flex-end !important;
+                    }
+                }
+
+                :global(.impact-table-factor-cell) {
+                    font-weight: 700 !important;
+                    color: var(--color-navy) !important;
+                    font-size: 1.125rem !important;
+                    padding: 1.5rem 2rem !important;
+                }
+
+                :global(.impact-table-direct-cell) {
+                    color: var(--color-slate-600) !important;
+                    font-weight: 500 !important;
+                    font-size: 1.125rem !important;
+                    padding: 1.5rem 2rem !important;
+                }
+
+                :global(.impact-table-impact-cell) {
+                    padding: 1.5rem 2rem !important;
+                }
+
+                :global(.ant-table-thead > tr > th) {
+                    background: rgba(239, 246, 255, 0.8) !important;
+                    color: var(--color-cobalt) !important;
+                    font-weight: 700 !important;
+                    text-transform: uppercase !important;
+                    letter-spacing: 0.05em !important;
+                }
+
+                .impact-map-container {
+                    width: 100%;
+                    min-height: 400px;
+                    height: 100%;
+                    border-radius: 0.75rem;
+                    overflow: hidden;
+                    border: 1px solid var(--color-blue-100);
+                    background: white;
+                    position: relative;
+                    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                }
+
+                .impact-map-container:hover .impact-map-iframe {
+                    filter: grayscale(0);
+                }
+
+                .impact-map-iframe {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    filter: grayscale(1);
+                    transition: filter 0.5s ease;
+                }
+            `}</style>
+        </section>
     );
 }

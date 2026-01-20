@@ -1,6 +1,5 @@
 "use client";
 
-import { Section } from "./Section";
 import { Carousel, Card } from "antd";
 import { CheckCircle2, Zap } from "lucide-react";
 import { useTranslations } from 'next-intl';
@@ -14,66 +13,161 @@ export function Vision() {
         "/work_3.jpg"
     ];
 
-    // MÀU MỚI TỪ ẢNH: #004094
-    const BRAND_COLOR = "#004094";
-    const BRAND_COLOR_DARK = "#003070"; // Phiên bản đậm hơn chút cho khung chứa
-
     return (
-        // THAY ĐỔI 1: Áp dụng màu nền mới #004094 cho toàn bộ Section
-        <section id="vision" className="relative py-20 md:py-32 bg-[#004094] overflow-hidden">
+        <section id="vision" style={{
+            position: 'relative',
+            paddingTop: '5rem',
+            paddingBottom: '5rem',
+            background: 'var(--color-royal-blue)',
+            overflow: 'hidden'
+        }}>
+            {/* Decorative backgrounds */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '500px',
+                height: '500px',
+                background: 'rgba(255, 255, 255, 0.1)',
+                borderRadius: '50%',
+                filter: 'blur(100px)',
+                pointerEvents: 'none'
+            }} />
+            <div style={{
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+                width: '500px',
+                height: '500px',
+                background: 'rgba(96, 165, 250, 0.1)',
+                borderRadius: '50%',
+                filter: 'blur(120px)',
+                pointerEvents: 'none'
+            }} />
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: 'url("/grid-pattern.svg")',
+                opacity: 0.2,
+                pointerEvents: 'none',
+                mixBlendMode: 'overlay'
+            }} />
 
-            {/* Hiệu ứng nền decorative: Điều chỉnh màu gradient cho hợp với nền xanh mới */}
-            <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 pointer-events-none mix-blend-overlay" />
-
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
-                    <div className="space-y-8">
+            <div style={{
+                maxWidth: '1280px',
+                margin: '0 auto',
+                padding: '0 1rem',
+                position: 'relative',
+                zIndex: 10
+            }}>
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr',
+                    gap: '4rem',
+                    alignItems: 'center'
+                }} className="vision-grid">
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-wider mb-4">
-                                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                            <div style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                padding: '0.25rem 0.75rem',
+                                borderRadius: '9999px',
+                                background: 'rgba(255, 255, 255, 0.1)',
+                                border: '1px solid rgba(255, 255, 255, 0.2)',
+                                color: 'white',
+                                fontSize: '0.75rem',
+                                fontWeight: 700,
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.05em',
+                                marginBottom: '1rem'
+                            }}>
+                                <span className="pulse-animation" style={{
+                                    width: '0.5rem',
+                                    height: '0.5rem',
+                                    borderRadius: '50%',
+                                    background: 'white'
+                                }} />
                                 Future Ready
                             </div>
-                            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+                            <h2 style={{
+                                fontSize: 'clamp(1.875rem, 5vw, 3rem)',
+                                fontWeight: 700,
+                                color: 'white',
+                                lineHeight: 1.25
+                            }}>
                                 {t.rich('title', {
-                                    // Accent color giờ dùng màu trắng hoặc xanh rất sáng để nổi trên nền xanh đậm
-                                    accent: (chunks) => <span className="text-blue-200 drop-shadow-lg">{chunks}</span>
+                                    accent: (chunks) => <span style={{ color: '#bfdbfe', filter: 'drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))' }}>{chunks}</span>
                                 })}
                             </h2>
                         </div>
 
-                        <div className="space-y-4">
-                            <p className="text-blue-100/90 text-lg leading-relaxed font-light">
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                            <p style={{
+                                color: 'rgba(219, 234, 254, 0.9)',
+                                fontSize: '1.125rem',
+                                lineHeight: 1.625,
+                                fontWeight: 300
+                            }}>
                                 {t('desc1')}
                             </p>
-                            <p className="text-blue-100/90 text-lg leading-relaxed font-light">
+                            <p style={{
+                                color: 'rgba(219, 234, 254, 0.9)',
+                                fontSize: '1.125rem',
+                                lineHeight: 1.625,
+                                fontWeight: 300
+                            }}>
                                 {t.rich('desc2', {
-                                    bold: (chunks) => <span className="text-white font-medium">{chunks}</span>
+                                    bold: (chunks) => <span style={{ color: 'white', fontWeight: 500 }}>{chunks}</span>
                                 })}
                             </p>
                         </div>
 
-                        {/* Card Glassmorphism */}
+                        {/* Glassmorphism Card */}
                         <Card
                             variant="borderless"
-                            className="!bg-black/20 !backdrop-blur-md !border !border-white/10 !rounded-2xl !shadow-2xl shadow-black/20"
+                            className="vision-glass-card"
                             styles={{ body: { padding: '2rem' } }}
                         >
-                            <h3 className="font-bold text-white text-xl mb-6 flex items-center gap-2">
-                                <Zap className="w-5 h-5 text-yellow-300 fill-yellow-300" />
+                            <h3 style={{
+                                fontWeight: 700,
+                                color: '#1e40af',
+                                fontSize: '1.25rem',
+                                marginBottom: '1.5rem',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem'
+                            }}>
+                                <Zap style={{ width: '1.25rem', height: '1.25rem', color: '#1e50e1', fill: '#1e50e1' }} />
                                 {t('boxTitle')}
                             </h3>
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <ul style={{
+                                display: 'grid',
+                                gridTemplateColumns: '1fr',
+                                gap: '1rem'
+                            }} className="vision-list">
                                 {[
                                     t('list1'),
                                     t('list2'),
                                     t('list3'),
                                     t('list4')
                                 ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-3 text-sm font-medium text-white/90">
-                                        {/* Icon check màu trắng hoặc xanh sáng */}
-                                        <CheckCircle2 className="w-5 h-5 text-blue-300 shrink-0 mt-0.5" />
+                                    <li key={i} style={{
+                                        display: 'flex',
+                                        alignItems: 'flex-start',
+                                        gap: '0.75rem',
+                                        fontSize: '0.875rem',
+                                        fontWeight: 500,
+                                        color: '#334155'
+                                    }}>
+                                        <CheckCircle2 style={{
+                                            width: '1.25rem',
+                                            height: '1.25rem',
+                                            color: '#1e50e1',
+                                            flexShrink: 0,
+                                            marginTop: '0.125rem'
+                                        }} />
                                         <span>{item}</span>
                                     </li>
                                 ))}
@@ -81,34 +175,72 @@ export function Vision() {
                         </Card>
                     </div>
 
-                    <div className="relative group w-full">
+                    <div style={{ position: 'relative', width: '100%' }} className="carousel-wrapper">
                         {/* Glow effect */}
-                        <div className="absolute -inset-1 bg-white/20 opacity-30 blur-2xl rounded-[2rem] group-hover:opacity-50 transition-opacity duration-700" />
+                        <div className="carousel-glow" />
 
-                        {/* THAY ĐỔI 2: Khung Carousel dùng màu đậm hơn chút (#003070) để tạo chiều sâu */}
-                        <div className="relative bg-[#003070] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+                        <div style={{
+                            position: 'relative',
+                            background: 'var(--color-royal-blue-dark)',
+                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                            borderRadius: '1rem',
+                            overflow: 'hidden',
+                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                            maxWidth: '100%',
+                            width: '100%'
+                        }}>
                             {/* Decorative header */}
-                            <div className="h-8 bg-black/20 border-b border-white/5 flex items-center px-4 gap-2">
-                                <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                            <div style={{
+                                height: '2rem',
+                                background: 'rgba(0, 0, 0, 0.2)',
+                                borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                padding: '0 1rem',
+                                gap: '0.5rem'
+                            }}>
+                                <div style={{ width: '0.75rem', height: '0.75rem', borderRadius: '50%', background: 'rgba(239, 68, 68, 0.8)' }} />
+                                <div style={{ width: '0.75rem', height: '0.75rem', borderRadius: '50%', background: 'rgba(234, 179, 8, 0.8)' }} />
+                                <div style={{ width: '0.75rem', height: '0.75rem', borderRadius: '50%', background: 'rgba(34, 197, 94, 0.8)' }} />
                             </div>
 
-                            <Carousel autoplay autoplaySpeed={4000} effect="fade" className="w-full">
+                            <Carousel autoplay autoplaySpeed={4000} effect="fade" style={{ width: '100%' }}>
                                 {slides.map((slide, idx) => (
-                                    <div key={idx} className="relative aspect-[4/3] md:aspect-video w-full group/slide">
+                                    <div key={idx} className="carousel-slide">
                                         <img
                                             src={slide}
                                             alt="Smart Production"
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover/slide:scale-105"
+                                            className="carousel-image"
                                         />
-                                        {/* THAY ĐỔI 3: Gradient overlay dùng chính màu nền mới (#004094) */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[#004094] via-transparent to-transparent opacity-90" />
+                                        <div style={{
+                                            position: 'absolute',
+                                            inset: 0,
+                                            background: 'linear-gradient(to top, var(--color-royal-blue), transparent, transparent)',
+                                            opacity: 0.9
+                                        }} />
 
-                                        <div className="absolute inset-x-0 bottom-0 p-8 flex items-end justify-between">
+                                        <div style={{
+                                            position: 'absolute',
+                                            left: 0,
+                                            right: 0,
+                                            bottom: 0,
+                                            padding: '2rem 2rem 5rem 2rem',
+                                            display: 'flex',
+                                            alignItems: 'flex-end',
+                                            justifyContent: 'space-between'
+                                        }}>
                                             <div>
-                                                <h3 className="font-bold text-xl text-white mb-1">{t('smartFactoryTitle')}</h3>
-                                                <p className="text-sm text-blue-100/80 max-w-xs">{t('smartFactoryDesc')}</p>
+                                                <h3 style={{
+                                                    fontWeight: 700,
+                                                    fontSize: '1.25rem',
+                                                    color: 'white',
+                                                    marginBottom: '0.25rem'
+                                                }}>{t('smartFactoryTitle')}</h3>
+                                                <p style={{
+                                                    fontSize: '0.875rem',
+                                                    color: 'rgba(219, 234, 254, 0.8)',
+                                                    maxWidth: '20rem'
+                                                }}>{t('smartFactoryDesc')}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -118,6 +250,115 @@ export function Vision() {
                     </div>
                 </div>
             </div>
+
+            <style jsx>{`
+                @keyframes pulse {
+                    0%, 100% {
+                        opacity: 1;
+                    }
+                    50% {
+                        opacity: 0.5;
+                    }
+                }
+
+                .pulse-animation {
+                    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+                }
+
+                .vision-glass-card {
+                    background: rgba(0, 0, 0, 0.2) !important;
+                    backdrop-filter: blur(12px) !important;
+                    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                    border-radius: 1rem !important;
+                    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2) !important;
+                }
+
+                .carousel-wrapper {
+                    position: relative;
+                    max-width: 100%;
+                    overflow: hidden;
+                }
+
+                .carousel-wrapper :global(.ant-carousel) {
+                    aspect-ratio: 4 / 3;
+                    width: 100%;
+                }
+
+                .carousel-wrapper :global(.ant-carousel),
+                .carousel-wrapper :global(.slick-slider),
+                .carousel-wrapper :global(.slick-list),
+                .carousel-wrapper :global(.slick-track) {
+                    max-width: 100% !important;
+                    width: 100% !important;
+                }
+
+                .carousel-wrapper :global(.slick-slider),
+                .carousel-wrapper :global(.slick-list),
+                .carousel-wrapper :global(.slick-track) {
+                    height: 100% !important;
+                }
+
+                /* Fix for fade effect: force slides to overlap instead of stacking vertically */
+                .carousel-wrapper :global(.slick-slide) {
+                    position: absolute !important;
+                    top: 0 !important;
+                    left: 0 !important;
+                    width: 100% !important;
+                    height: 100% !important;
+                }
+
+                .carousel-wrapper :global(.slick-track) {
+                    position: relative !important;
+                }
+
+                .carousel-wrapper :global(.slick-list) {
+                    overflow: hidden !important;
+                }
+
+                .carousel-wrapper:hover .carousel-glow {
+                    opacity: 0.5;
+                }
+
+                .carousel-glow {
+                    position: absolute;
+                    inset: -0.25rem;
+                    background: rgba(255, 255, 255, 0.2);
+                    opacity: 0.3;
+                    filter: blur(2rem);
+                    border-radius: 2rem;
+                    transition: opacity 0.7s ease;
+                }
+
+                .carousel-slide {
+                    position: relative;
+                    width: 100%;
+                }
+
+                .carousel-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.7s ease;
+                }
+
+                .carousel-slide:hover .carousel-image {
+                    transform: scale(1.05);
+                }
+
+                @media (min-width: 1024px) {
+                    .vision-grid {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                    }
+
+                    .vision-list {
+                        grid-template-columns: repeat(2, 1fr) !important;
+                    }
+
+                    .carousel-wrapper :global(.ant-carousel) {
+                        aspect-ratio: 16 / 9;
+                    }
+                }
+            `}</style>
         </section>
     );
 }

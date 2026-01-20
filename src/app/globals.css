@@ -1,45 +1,7 @@
-@import "tailwindcss";
-
-/* stylelint-disable-next-line */
-:root {
-  /* New Blue Theme Palette */
-  --color-primary: #1e50e1;
-  --color-primary-hover: #153bb5;
-  --color-primary-light: #5678e8;
-
-  /* Background Colors */
-  --color-bg-surface: #F0F4FF;
-  --color-bg-card: #FFFFFF;
-  --color-dark-navy: #0B1B45;
-
-  /* Accent Blues */
-  --color-blue-50: #EFF6FF;
-  --color-blue-100: #DBEAFE;
-
-  /* Legacy compatibility */
-  --color-cobalt: #1e50e1;
-  --color-navy: #0F172A;
-  --color-soft: #F8FAFC;
-
-  /* Section backgrounds */
-  --color-bg-section-dark: #0B1B45;
-  --color-bg-section-light: #F0F4FF;
-  --color-bg-footer: #0B1B45;
-
-  /* Action colors */
-  --color-action-blue: #1e50e1;
-  --color-action-orange: #EA580C;
-
-  /* Text colors */
-  --color-text-light: #F8FAFC;
-  --color-text-dark: #0F172A;
-  --color-text-muted: #CBD5E1;
-  --color-text-muted-dark: #475569;
-  --color-text-title: #FFFFFF;
-  --color-text-body: #E2E8F0;
-
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-}
+/* 
+ * Global Styles
+ * Theme colors and CSS variables are injected via layout.tsx from themeConfig.ts
+ */
 
 /* Custom Shadow Utilities - Blue Tinted */
 .shadow-blue {
@@ -69,23 +31,9 @@
     linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--color-bg-surface);
   background-color: #F0F4FF;
-  /* Light blue surface background */
   color: var(--color-text-dark);
-  /* Dark text for light backgrounds */
   font-family: var(--font-sans);
 }

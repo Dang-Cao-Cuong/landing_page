@@ -9,7 +9,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import AntdRegistry from '@/lib/AntdRegistry';
 import { ConfigProvider } from 'antd';
-import theme from '@/theme/themeConfig';
+import theme, { getCSSVariables } from '@/theme/themeConfig';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -43,7 +43,7 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} style={getCSSVariables() as React.CSSProperties}>
       <body className={`${inter.variable} antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <AntdRegistry>

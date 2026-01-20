@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Clock, Database, TrendingUp } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { useTranslations } from 'next-intl';
 import { Button, Typography } from "antd";
+import styles from '@/styles/gradients.module.css';
 
 const { Title, Paragraph } = Typography;
 
@@ -12,63 +12,124 @@ export function Hero() {
     const t = useTranslations('Hero');
 
     return (
-        // --- THAY ĐỔI 1: Nền Gradient đậm hơn ---
-        // Thay đổi từ: bg-gradient-to-br from-[#F0F4FF] via-white to-[#E6EEFF]
-        // Thành: gradient sử dụng các tông màu xanh rõ nét hơn (blue-50, blue-100)
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#DBEAFE] via-[#F5F9FF] to-[#BFDBFE] selection:bg-blue-200">
+        <section style={{
+            position: 'relative',
+            minHeight: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            overflow: 'hidden',
+            paddingTop: '80px'
+        }} className={styles.heroGradient}>
+            {/* Blur decorations */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: '800px',
+                height: '600px',
+                background: 'rgba(30, 80, 225, 0.3)',
+                borderRadius: '50%',
+                filter: 'blur(120px)',
+                pointerEvents: 'none',
+                mixBlendMode: 'multiply'
+            }} />
+            <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                width: '600px',
+                height: '500px',
+                background: 'rgba(86, 120, 232, 0.25)',
+                borderRadius: '50%',
+                filter: 'blur(100px)',
+                pointerEvents: 'none',
+                mixBlendMode: 'multiply'
+            }} />
 
-            {/* --- THAY ĐỔI 2: Tăng độ đậm (opacity) của các khối màu nền --- */}
-            {/* Góc trên phải: Tăng opacity từ /10 lên /30 */}
-            <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-[#1e50e1]/30 rounded-full blur-[120px] pointer-events-none mix-blend-multiply" />
-            {/* Góc dưới trái: Tăng opacity từ /10 lên /25 và dùng màu sáng hơn chút */}
-            <div className="absolute bottom-0 left-0 w-[600px] h-[500px] bg-[#5678e8]/25 rounded-full blur-[100px] pointer-events-none mix-blend-multiply" />
-
-            <div className="container relative z-10 px-4 md:px-6 text-center pt-20">
+            <div style={{
+                maxWidth: '1280px',
+                position: 'relative',
+                zIndex: 10,
+                padding: '0 1rem',
+                textAlign: 'center',
+                paddingTop: '5rem',
+                margin: '0 auto',
+                width: '100%'
+            }}>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="space-y-8"
+                    style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
                 >
                     {/* Tagline Pill */}
                     <motion.div
                         initial={{ scale: 0.95, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.5 }}
-                        // Làm cho pill này nổi bật hơn một chút trên nền đậm
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-cobalt/20 text-sm md:text-base text-cobalt backdrop-blur-sm shadow-sm shadow-blue-900/5"
+                        style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            padding: '0.375rem 1rem',
+                            borderRadius: '9999px',
+                            background: 'rgba(255, 255, 255, 0.8)',
+                            border: '1px solid rgba(30, 80, 225, 0.2)',
+                            fontSize: '0.875rem',
+                            color: 'var(--color-cobalt)',
+                            backdropFilter: 'blur(4px)',
+                            boxShadow: '0 1px 2px 0 rgba(30, 58, 138, 0.05)',
+                            alignSelf: 'center'
+                        }}
                     >
-                        <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-cobalt"></span>
+                        <span style={{ position: 'relative', display: 'flex', height: '0.5rem', width: '0.5rem' }}>
+                            <span className="ping-animation" style={{
+                                position: 'absolute',
+                                display: 'inline-flex',
+                                height: '100%',
+                                width: '100%',
+                                borderRadius: '50%',
+                                background: '#0ea5e9',
+                                opacity: 0.75
+                            }}></span>
+                            <span style={{
+                                position: 'relative',
+                                display: 'inline-flex',
+                                borderRadius: '50%',
+                                height: '0.5rem',
+                                width: '0.5rem',
+                                background: 'var(--color-cobalt)'
+                            }}></span>
                         </span>
                         <span>{t('tagline')}</span>
                     </motion.div>
 
-                    {/* --- THAY ĐỔI 3: Màu chữ tối hơn + Font size tự động tăng theo màn hình --- */}
+                    {/* Title */}
                     <Title
                         level={1}
-                        className="drop-shadow-sm"
                         style={{
                             fontSize: 'clamp(2.25rem, 6vw, 8rem)',
                             fontWeight: 800,
                             letterSpacing: '-0.025em',
-                            color: '#1e3a8a', // blue-900
+                            color: '#1e3a8a',
                             paddingBottom: '0.5rem',
                             marginBottom: 0,
-                            lineHeight: 1.1
+                            lineHeight: 1.1,
+                            filter: 'drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))'
                         }}
                     >
                         {t.rich('title', {
-                            accent: (chunks) => <span style={{ color: '#172554' }}>{chunks}</span> // blue-950
+                            accent: (chunks) => <span style={{ color: '#172554' }}>{chunks}</span>
                         })}
                     </Title>
 
                     <Paragraph
-                        className="!max-w-3xl !mx-auto"
                         style={{
+                            maxWidth: '48rem',
+                            margin: '0 auto',
                             fontSize: 'clamp(1.125rem, 2.0vw, 2.5rem)',
-                            color: 'rgba(23, 37, 84, 0.8)', // blue-950/80
+                            color: 'rgba(23, 37, 84, 0.8)',
                             lineHeight: 1.6,
                             fontWeight: 300
                         }}
@@ -82,58 +143,151 @@ export function Hero() {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4, duration: 0.5 }}
-                        className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8 w-full sm:w-auto px-4 sm:px-0"
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '1rem',
+                            paddingTop: '2rem',
+                            width: '100%'
+                        }}
+                        className="hero-buttons"
                     >
                         <Button
                             type="primary"
                             size="large"
                             shape="round"
-                            // Tăng shadow cho nút chính
-                            className="h-auto px-8 py-4 text-lg font-bold !bg-[#1e50e1] hover:!bg-[#153bb5] shadow-xl shadow-blue-600/40 hover:shadow-2xl hover:shadow-blue-600/60 hover:scale-105 transition-all"
+                            className="hero-primary-btn"
                         >
-                            <span className="flex items-center gap-2">
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                 {t('explore')}
-                                <ArrowRight className="w-5 h-5" />
+                                <ArrowRight style={{ width: '1.25rem', height: '1.25rem' }} />
                             </span>
                         </Button>
                         <Button
                             size="large"
                             shape="round"
                             onClick={() => document.getElementById('consultation-form')?.scrollIntoView({ behavior: 'smooth' })}
-                            // Làm nút phụ rõ nét hơn trên nền mới (tăng opacity bg và border)
-                            className="!h-auto !px-8 !py-4 !bg-white/70 !border-cobalt/30 !text-cobalt !font-semibold !text-lg hover:!bg-white/90 !backdrop-blur-md shadow-md shadow-blue-900/5"
+                            className="hero-secondary-btn"
                         >
                             {t('contact')}
                         </Button>
                     </motion.div>
                 </motion.div>
 
-                {/* Floating Icons/Elements - --- THAY ĐỔI 4: Làm nổi bật thẻ --- */}
+                {/* Floating Icons/Elements */}
                 <motion.div
                     animate={{ y: [0, -20, 0] }}
                     transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    // Tăng bg opacity lên /90 và border rõ hơn
-                    className="hidden lg:block absolute top-20 left-10 p-4 rounded-2xl bg-white/90 border border-white/60 backdrop-blur-md shadow-xl shadow-blue-900/10"
+                    className="hero-floating-card hero-floating-left"
                 >
-                    <Clock className="w-8 h-8 text-cobalt mb-2" />
-                    <div className="text-xs text-zinc-600">Real-time</div>
-                    <div className="font-bold text-blue-950">Monitoring</div>
+                    <Clock style={{ width: '2rem', height: '2rem', color: 'var(--color-cobalt)', marginBottom: '0.5rem' }} />
+                    <div style={{ fontSize: '0.75rem', color: '#52525b' }}>Real-time</div>
+                    <div style={{ fontWeight: 700, color: '#172554' }}>Monitoring</div>
                 </motion.div>
 
                 <motion.div
                     animate={{ y: [0, 20, 0] }}
                     transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    // Tăng bg opacity lên /90 và border rõ hơn
-                    className="hidden lg:block absolute bottom-40 right-10 p-4 rounded-2xl bg-white/90 border border-white/60 backdrop-blur-md shadow-xl shadow-blue-900/10"
+                    className="hero-floating-card hero-floating-right"
                 >
-                    <TrendingUp className="w-8 h-8 text-green-600 mb-2" />
-                    <div className="text-xs text-zinc-600">Increase</div>
-                    <div className="font-bold text-blue-950">Efficiency</div>
+                    <TrendingUp style={{ width: '2rem', height: '2rem', color: '#16a34a', marginBottom: '0.5rem' }} />
+                    <div style={{ fontSize: '0.75rem', color: '#52525b' }}>Increase</div>
+                    <div style={{ fontWeight: 700, color: '#172554' }}>Efficiency</div>
                 </motion.div>
             </div>
 
-            {/* Decorative grid - Tăng nhẹ opacity */}
-            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent)] pointer-events-none" />
+            {/* Decorative grid */}
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: 'url("/grid-pattern.svg")',
+                backgroundPosition: 'center',
+                opacity: 0.4,
+                maskImage: 'radial-gradient(ellipse at center, black, transparent)',
+                WebkitMaskImage: 'radial-gradient(ellipse at center, black, transparent)',
+                pointerEvents: 'none'
+            }} />
+
+            <style jsx>{`
+                @keyframes ping {
+                    75%, 100% {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+
+                .ping-animation {
+                    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+                }
+
+                .hero-primary-btn {
+                    height: auto !important;
+                    padding: 1rem 2rem !important;
+                    font-size: 1.125rem !important;
+                    font-weight: 700 !important;
+                    background: var(--color-primary) !important;
+                    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4), 0 10px 10px -5px rgba(37, 99, 235, 0.15) !important;
+                    transition: all 0.3s ease !important;
+                }
+
+                .hero-primary-btn:hover {
+                    background: var(--color-primary-hover) !important;
+                    box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.6) !important;
+                    transform: scale(1.05) !important;
+                }
+
+                .hero-secondary-btn {
+                    height: auto !important;
+                    padding: 1rem 2rem !important;
+                    background: rgba(255, 255, 255, 0.7) !important;
+                    border-color: rgba(30, 80, 225, 0.3) !important;
+                    color: var(--color-cobalt) !important;
+                    font-weight: 600 !important;
+                    font-size: 1.125rem !important;
+                    backdrop-filter: blur(12px) !important;
+                    box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.05) !important;
+                }
+
+                .hero-secondary-btn:hover {
+                    background: rgba(255, 255, 255, 0.9) !important;
+                }
+
+                :global(.hero-floating-card) {
+                    display: none;
+                    padding: 1rem;
+                    border-radius: 1rem;
+                    background: rgba(255, 255, 255, 0.9);
+                    border: 1px solid rgba(255, 255, 255, 0.6);
+                    backdrop-filter: blur(12px);
+                    box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.1), 0 10px 10px -5px rgba(30, 58, 138, 0.04);
+                }
+
+                :global(.hero-floating-left) {
+                    position: absolute;
+                    top: 5rem;
+                    left: 2.5rem;
+                }
+
+                :global(.hero-floating-right) {
+                    position: absolute;
+                    bottom: 10rem;
+                    right: 2.5rem;
+                }
+
+                @media (min-width: 1024px) {
+                    :global(.hero-floating-card) {
+                        display: block;
+                    }
+                }
+
+                @media (min-width: 640px) {
+                    .hero-buttons {
+                        flex-direction: row !important;
+                    }
+                }
+            `}</style>
         </section>
     );
 }

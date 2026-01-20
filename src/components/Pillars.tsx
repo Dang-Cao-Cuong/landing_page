@@ -1,9 +1,9 @@
 "use client";
 
-import { Section } from "./Section";
 import { Clock, Gauge, DollarSign, Trophy, TrendingUp } from "lucide-react";
 import { Card } from "antd";
 import { useTranslations } from 'next-intl';
+import styles from '@/styles/gradients.module.css';
 
 export function Pillars() {
     const t = useTranslations('Pillars');
@@ -17,39 +17,96 @@ export function Pillars() {
     ];
 
     return (
-        <section id="pillars" className="relative py-20 md:py-32 bg-gradient-to-b from-[#F5F9FF] via-[#ECF4FF] to-[#E0E7FF] overflow-hidden">
-            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] pointer-events-none" />
+        <section id="pillars" style={{
+            position: 'relative',
+            paddingTop: '5rem',
+            paddingBottom: '5rem',
+            overflow: 'hidden'
+        }} className={styles.pillarsGradient}>
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: 'url("/grid-pattern.svg")',
+                opacity: 0.03,
+                pointerEvents: 'none'
+            }} />
 
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="text-center mb-20 space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1e50e1]/10 border border-[#1e50e1]/20 text-[#1e50e1] text-xs font-bold uppercase tracking-wider mb-2">
+            <div style={{
+                maxWidth: '1280px',
+                margin: '0 auto',
+                padding: '0 1rem',
+                position: 'relative',
+                zIndex: 10
+            }}>
+                <div style={{
+                    textAlign: 'center',
+                    marginBottom: '5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1rem'
+                }}>
+                    <div style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        padding: '0.25rem 0.75rem',
+                        borderRadius: '9999px',
+                        background: 'rgba(30, 80, 225, 0.1)',
+                        border: '1px solid rgba(30, 80, 225, 0.2)',
+                        color: 'var(--color-primary)',
+                        fontSize: '0.75rem',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                        marginBottom: '0.5rem',
+                        alignSelf: 'center'
+                    }}>
                         {t('badge')}
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-[#0B1B45]">
+                    <h2 style={{
+                        fontSize: 'clamp(1.875rem, 5vw, 3rem)',
+                        fontWeight: 700,
+                        color: 'var(--color-dark-navy)'
+                    }}>
                         {t('title')}
                     </h2>
-                    <p className="max-w-2xl mx-auto text-slate-600 md:text-lg font-light leading-relaxed">
+                    <p style={{
+                        maxWidth: '42rem',
+                        margin: '0 auto',
+                        color: 'var(--color-slate-600)',
+                        fontSize: 'clamp(1rem, 2vw, 1.125rem)',
+                        fontWeight: 300,
+                        lineHeight: 1.625
+                    }}>
                         {t('subtitle')}
                     </p>
                 </div>
 
-                <div className="relative">
-                    <div className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1e50e1]/30 to-transparent -translate-y-1/2 z-0" />
+                <div style={{ position: 'relative' }}>
+                    {/* Connecting line */}
+                    <div style={{
+                        display: 'none',
+                        position: 'absolute',
+                        top: '50%',
+                        left: 0,
+                        right: 0,
+                        height: '1px',
+                        background: 'linear-gradient(to right, transparent, rgba(30, 80, 225, 0.3), transparent)',
+                        transform: 'translateY(-50%)',
+                        zIndex: 0
+                    }} className="md-line" />
 
-                    <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(1, 1fr)',
+                        gap: '1.5rem'
+                    }} className="pillars-grid">
                         {pillars.map((item, index) => (
-                            <div key={index} className="relative group perspective-1000">
+                            <div key={index} style={{ position: 'relative' }} className="pillar-card-wrapper">
                                 <Card
                                     hoverable
                                     variant="borderless"
-                                    // CHỈNH SỬA Ở ĐÂY:
-                                    // 1. Loại bỏ group-hover:bg-[#1e50e1] (Không đổi nền card thành xanh đậm nữa)
-                                    // 2. Thay vào đó dùng group-hover:bg-white nhưng shadow xanh đậm (shadow-blue-500/20)
-                                    // 3. Viền (Border) đổi màu xanh khi hover
-                                    className="h-full bg-white border border-blue-100 shadow-sm transition-all duration-500 
-                                               group-hover:-translate-y-2 
-                                               group-hover:border-[#1e50e1] 
-                                               group-hover:shadow-xl group-hover:shadow-blue-600/10"
+                                    className="pillar-card"
                                     styles={{
                                         body: {
                                             height: '100%',
@@ -62,26 +119,40 @@ export function Pillars() {
                                         }
                                     }}
                                 >
-                                    {/* Số thứ tự: Mờ đi khi hover */}
-                                    <div className="absolute top-2 right-4 text-5xl font-black text-blue-50 group-hover:text-blue-100 transition-colors z-0 select-none">
+                                    {/* Number badge */}
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: '0.5rem',
+                                        right: '1rem',
+                                        fontSize: '3rem',
+                                        fontWeight: 900,
+                                        color: 'var(--color-blue-50)',
+                                        zIndex: 0,
+                                        userSelect: 'none'
+                                    }} className="pillar-number">
                                         0{index + 1}
                                     </div>
 
-                                    {/* ICON CONTAINER: Thay đổi nhẹ nhàng */}
-                                    {/* Mặc định: Nền xanh nhạt, Icon xanh đậm */}
-                                    {/* Hover: Nền xanh đậm, Icon trắng -> Đảo ngược màu tạo điểm nhấn */}
-                                    <div className="relative z-10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500
-                                                    bg-[#F0F4FF] group-hover:bg-[#1e50e1] group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-blue-500/30">
-                                        <item.icon className="w-8 h-8 transition-colors duration-300 text-[#1e50e1] group-hover:text-white" />
+                                    {/* Icon container */}
+                                    <div className="pillar-icon-container">
+                                        <item.icon className="pillar-icon" style={{ width: '2rem', height: '2rem' }} />
                                     </div>
 
-                                    <div className="relative z-10 space-y-3">
-                                        {/* Tiêu đề: Giữ nguyên màu tối, chỉ đổi màu xanh khi hover */}
-                                        <h3 className="font-bold text-xl text-[#0B1B45] group-hover:text-[#1e50e1] transition-colors">
+                                    <div style={{
+                                        position: 'relative',
+                                        zIndex: 10,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '0.75rem'
+                                    }}>
+                                        <h3 className="pillar-title">
                                             {item.title}
                                         </h3>
-                                        {/* Nội dung: Giữ nguyên màu xám để dễ đọc */}
-                                        <p className="text-[15px] text-slate-600 leading-relaxed">
+                                        <p style={{
+                                            fontSize: '0.9375rem',
+                                            color: 'var(--color-slate-600)',
+                                            lineHeight: 1.625
+                                        }}>
                                             {item.desc}
                                         </p>
                                     </div>
@@ -91,6 +162,75 @@ export function Pillars() {
                     </div>
                 </div>
             </div>
+
+            <style jsx>{`
+                @media (min-width: 768px) {
+                    .md-line {
+                        display: block !important;
+                    }
+                    .pillars-grid {
+                        grid-template-columns: repeat(5, 1fr) !important;
+                    }
+                }
+
+                .pillar-card {
+                    height: 100%;
+                    background: var(--color-white);
+                    border: 1px solid var(--color-blue-100);
+                    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                    transition: all 0.5s ease;
+                }
+
+                .pillar-card-wrapper:hover .pillar-card {
+                    transform: translateY(-0.5rem);
+                    border-color: var(--color-primary);
+                    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 10px 10px -5px rgba(37, 99, 235, 0.04);
+                }
+
+                .pillar-card-wrapper:hover .pillar-number {
+                    color: var(--color-blue-100);
+                }
+
+                .pillar-icon-container {
+                    position: relative;
+                    z-index: 10;
+                    width: 4rem;
+                    height: 4rem;
+                    border-radius: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1.5rem;
+                    transition: all 0.5s ease;
+                    background: var(--color-bg-surface);
+                }
+
+                .pillar-card-wrapper:hover .pillar-icon-container {
+                    background: var(--color-primary);
+                    transform: scale(1.1);
+                    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+                }
+
+                .pillar-icon {
+                    transition: color 0.3s ease;
+                    color: var(--color-primary);
+                }
+
+                .pillar-card-wrapper:hover .pillar-icon {
+                    color: var(--color-white);
+                }
+
+                .pillar-title {
+                    font-weight: 700;
+                    font-size: 1.25rem;
+                    color: var(--color-dark-navy);
+                    transition: color 0.3s ease;
+                }
+
+                .pillar-card-wrapper:hover .pillar-title {
+                    color: var(--color-primary);
+                }
+            `}</style>
         </section>
     );
 }

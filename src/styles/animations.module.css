@@ -1,0 +1,74 @@
+/* Keyframe Animations */
+@keyframes ping {
+
+    75%,
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Animation Classes */
+.animatePing {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animatePulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Transition Utilities */
+.transitionAll {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.transitionColors {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.transitionTransform {
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+.duration300 {
+    transition-duration: 300ms;
+}
+
+.duration500 {
+    transition-duration: 500ms;
+}
+
+/* Hover Transform Effects */
+.hoverTranslateY {
+    transition: transform 0.5s ease;
+}
+
+.hoverTranslateY:hover {
+    transform: translateY(-0.5rem);
+}
+
+.hoverScale {
+    transition: transform 0.3s ease;
+}
+
+.hoverScale:hover {
+    transform: scale(1.05);
+}

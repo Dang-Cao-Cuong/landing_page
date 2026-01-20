@@ -1,0 +1,32 @@
+/* Primary Gradient Backgrounds */
+.bgMeshAurora {
+    background: linear-gradient(135deg, #1e50e1 0%, #5678e8 100%);
+    background-image:
+        radial-gradient(at 0% 0%, rgba(30, 80, 225, 0.4) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(86, 120, 232, 0.3) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(30, 80, 225, 0.3) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(86, 120, 232, 0.3) 0px, transparent 50%);
+}
+
+/* Hero Section Gradient */
+.heroGradient {
+    background: linear-gradient(to bottom right, #DBEAFE, #F5F9FF, #BFDBFE);
+}
+
+/* Pillars Section Gradient */
+.pillarsGradient {
+    background: linear-gradient(to bottom, #F5F9FF, #ECF4FF, #E0E7FF);
+}
+
+/* Grid Pattern Background */
+.gridBg {
+    background-image: url('/grid.svg');
+    background-position: center;
+    opacity: 0.4;
+}
+
+/* Mask for Gradient Fade */
+.maskRadial {
+    mask-image: radial-gradient(ellipse at center, black, transparent);
+    -webkit-mask-image: radial-gradient(ellipse at center, black, transparent);
+}

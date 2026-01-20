@@ -2,7 +2,6 @@
 
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/routing';
-import { Globe } from 'lucide-react';
 import { startTransition } from 'react';
 
 export function LanguageSwitcher() {
@@ -17,20 +16,50 @@ export function LanguageSwitcher() {
     }
 
     return (
-        <div className="flex items-center gap-1">
+        <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.25rem'
+        }}>
             <button
                 onClick={() => onSelectChange('vi')}
-                className={`text-sm font-medium transition-colors ${locale === 'vi' ? 'text-cobalt font-bold' : 'text-zinc-500 hover:text-cobalt'}`}
+                className="lang-button"
+                style={{
+                    fontSize: '0.875rem',
+                    fontWeight: locale === 'vi' ? 700 : 500,
+                    color: locale === 'vi' ? 'var(--color-cobalt)' : 'var(--color-zinc-500)',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: '0.25rem',
+                    transition: 'color 0.3s ease'
+                }}
             >
                 VN
             </button>
-            <span className="text-zinc-300">|</span>
+            <span style={{ color: '#d4d4d8' }}>|</span>
             <button
                 onClick={() => onSelectChange('en')}
-                className={`text-sm font-medium transition-colors ${locale === 'en' ? 'text-cobalt font-bold' : 'text-zinc-500 hover:text-cobalt'}`}
+                className="lang-button"
+                style={{
+                    fontSize: '0.875rem',
+                    fontWeight: locale === 'en' ? 700 : 500,
+                    color: locale === 'en' ? 'var(--color-cobalt)' : 'var(--color-zinc-500)',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: '0.25rem',
+                    transition: 'color 0.3s ease'
+                }}
             >
                 EN
             </button>
+
+            <style jsx>{`
+                .lang-button:hover {
+                    color: var(--color-cobalt);
+                }
+            `}</style>
         </div>
     );
 }

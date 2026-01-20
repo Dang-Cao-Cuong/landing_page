@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 interface SectionProps {
     id?: string;
@@ -12,26 +11,36 @@ interface SectionProps {
 
 export function Section({ id, className, children, bg = "dark" }: SectionProps) {
     const bgStyles = {
-        dark: "bg-[#0B1B45] text-white",      // Dark navy
-        light: "bg-[#F0F4FF] text-zinc-900",  // Light blue surface
-        qwaste: "bg-[#0B1B45] text-white",    // Dark navy
-        white: "bg-white text-zinc-900",
-        soft: "bg-[#F8FAFC] text-zinc-900",   // Soft gray
-        cobalt: "bg-[#1e50e1] text-white",    // Primary blue
-        navy: "bg-[#0F172A] text-white",
-        aurora: "bg-mesh-aurora text-zinc-900",
+        dark: { background: 'var(--color-dark-navy)', color: 'white' },
+        light: { background: 'var(--color-bg-section-light)', color: '#18181b' },
+        qwaste: { background: 'var(--color-dark-navy)', color: 'white' },
+        white: { background: 'white', color: '#18181b' },
+        soft: { background: 'var(--color-soft)', color: '#18181b' },
+        cobalt: { background: 'var(--color-primary)', color: 'white' },
+        navy: { background: 'var(--color-navy)', color: 'white' },
+        aurora: { background: 'linear-gradient(135deg, #1e50e1 0%, #5678e8 100%)', color: '#18181b' },
     };
+
+    const selectedBg = bgStyles[bg as keyof typeof bgStyles] || bgStyles.dark;
 
     return (
         <section
             id={id}
-            className={cn(
-                "py-20 md:py-32 relative overflow-hidden",
-                bgStyles[bg as keyof typeof bgStyles] || bgStyles.dark,
-                className
-            )}
+            style={{
+                padding: '5rem 0',
+                position: 'relative',
+                overflow: 'hidden',
+                ...selectedBg
+            }}
+            className={className}
         >
-            <div className="container mx-auto px-4 z-10 relative">
+            <div style={{
+                maxWidth: '1280px',
+                margin: '0 auto',
+                padding: '0 1rem',
+                zIndex: 10,
+                position: 'relative'
+            }}>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -41,6 +50,14 @@ export function Section({ id, className, children, bg = "dark" }: SectionProps) 
                     {children}
                 </motion.div>
             </div>
+
+            <style jsx>{`
+                @media (min-width: 768px) {
+                    section {
+                        padding: 8rem 0 !important;
+                    }
+                }
+            `}</style>
         </section>
     );
 }

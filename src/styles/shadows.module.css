@@ -1,0 +1,46 @@
+/* Blue-Tinted Shadows */
+.shadowBlue {
+    box-shadow: 0 4px 12px rgba(30, 80, 225, 0.15);
+}
+
+.shadowBlueGlow {
+    box-shadow: 0 0 20px rgba(30, 80, 225, 0.5);
+}
+
+.shadowBlueLg {
+    box-shadow: 0 10px 25px rgba(30, 80, 225, 0.15);
+}
+
+.shadowBlue600 {
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4), 0 2px 4px -1px rgba(37, 99, 235, 0.15);
+}
+
+.shadowXl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.shadow2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.shadowMd {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.shadowSm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Shadow for blue-900 tint */
+.shadowBlue900 {
+    box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.1), 0 4px 6px -2px rgba(30, 58, 138, 0.05);
+}
+
+/* Hover shadow effects */
+.hoverShadowBlueLg:hover {
+    box-shadow: 0 20px 30px rgba(30, 80, 225, 0.3);
+}
+
+.hoverShadow2xl:hover {
+    box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.6);
+}
