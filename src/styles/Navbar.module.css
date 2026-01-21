@@ -1,0 +1,179 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+
+}
+
+.scrolled {
+    padding: 0.75rem 0;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brandLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.logoWrapper {
+    position: relative;
+    width: 10rem;
+    height: 5rem;
+}
+
+.logoImage {
+    object-fit: contain;
+}
+
+.brandTextDesktop {
+    color: var(--color-cobalt);
+    font-weight: 700;
+    font-size: 1.70rem;
+    letter-spacing: -0.025em;
+    display: none;
+}
+
+.brandTextMobile {
+    color: var(--color-cobalt);
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.025em;
+    display: block;
+}
+
+.desktopNav {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.navLink {
+    color: var(--color-zinc-600);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navLink:hover {
+    color: var(--color-cobalt);
+}
+
+.ctaButton {
+    font-weight: 700 !important;
+    height: auto !important;
+    padding: 0.5rem 1.5rem !important;
+    box-shadow: 0 10px 15px -3px rgba(30, 80, 225, 0.2) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.ctaButton:hover {
+    transform: scale(1.05) !important;
+}
+
+.mobileToggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.toggleButton {
+    color: var(--color-cobalt);
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Drawer Styles */
+.drawer :global(.ant-drawer-content) {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(40px) !important;
+}
+
+.drawerTitleWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.drawerLogoWrapper {
+    position: relative;
+    width: 5rem;
+    height: 2rem;
+}
+
+.drawerBrandText {
+    color: var(--color-cobalt);
+    font-weight: 700;
+}
+
+.drawerContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.drawerLink {
+    color: var(--color-zinc-600);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #f4f4f5;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+    font-size: 1.125rem;
+}
+
+.drawerLink:hover {
+    color: var(--color-cobalt);
+    background: rgba(239, 246, 255, 0.5);
+}
+
+.drawerCtaContainer {
+    padding: 1.5rem;
+}
+
+.drawerCtaButton {
+    font-weight: 700 !important;
+    height: 3rem !important;
+    font-size: 1.125rem !important;
+    box-shadow: 0 10px 15px -3px rgba(30, 80, 225, 0.2) !important;
+}
+
+@media (min-width: 640px) {
+    .brandTextDesktop {
+        display: block;
+    }
+
+    .brandTextMobile {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .desktopNav {
+        display: flex;
+    }
+
+    .mobileToggle {
+        display: none;
+    }
+}

@@ -1,0 +1,221 @@
+.pillarsSection {
+    position: relative;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background: linear-gradient(to bottom, #F5F9FF, #ECF4FF, #E0E7FF);
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .pillarsSection {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
+}
+
+.backgroundGrid {
+    position: absolute;
+    inset: 0;
+    background-image: url('/grid.svg');
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 85%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    background: rgba(30, 80, 225, 0.1);
+    border: 1px solid rgba(30, 80, 225, 0.2);
+    color: #1e50e1;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem;
+}
+
+.title {
+    font-size: 1.875rem;
+    /* text-3xl */
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #0B1B45;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 3rem;
+        /* text-5xl */
+    }
+}
+
+.subtitle {
+    max-width: 42rem;
+    margin: 0 auto;
+    color: #475569;
+    /* slate-600 */
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.625;
+}
+
+@media (min-width: 768px) {
+    .subtitle {
+        font-size: 1.125rem;
+        /* text-lg */
+    }
+}
+
+.contentWrapper {
+    position: relative;
+}
+
+/* Connecting Line */
+.connectingLine {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(30, 80, 225, 0.3), transparent);
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+@media (min-width: 768px) {
+    .connectingLine {
+        display: block;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.cardWrapper {
+    position: relative;
+    perspective: 1000px;
+}
+
+/* Card Styles */
+.card {
+    height: 100%;
+    background: white !important;
+    border: 1px solid #dbeafe !important;
+    /* blue-100 */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.5s ease;
+}
+
+.cardWrapper:hover .card {
+    transform: translateY(-0.5rem);
+    border-color: #1e50e1 !important;
+    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 10px 10px -5px rgba(37, 99, 235, 0.04) !important;
+    /* Extra shadow for hover state requested: shadow-xl shadow-blue-600/10 */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(37, 99, 235, 0.1) !important;
+}
+
+.number {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #eff6ff;
+    /* blue-50 */
+    z-index: 0;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.cardWrapper:hover .number {
+    color: #dbeafe;
+    /* blue-100 */
+}
+
+.iconContainer {
+    position: relative;
+    z-index: 10;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.5s ease;
+    background: #F0F4FF;
+    box-shadow: none;
+    /* Default shadow if needed */
+}
+
+.cardWrapper:hover .iconContainer {
+    background: #1e50e1;
+    transform: scale(1.1);
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+.icon {
+    width: 2rem;
+    height: 2rem;
+    transition: color 0.3s ease;
+    color: #1e50e1;
+}
+
+.cardWrapper:hover .icon {
+    color: white;
+}
+
+.cardContent {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.cardTitle {
+    font-weight: 700;
+    font-size: 1.25rem;
+    /* xl */
+    color: #0B1B45;
+    transition: color 0.3s ease;
+}
+
+.cardWrapper:hover .cardTitle {
+    color: #1e50e1;
+}
+
+.cardDesc {
+    font-size: 0.9375rem;
+    /* 15px */
+    color: #475569;
+    /* slate-600 */
+    line-height: 1.625;
+}

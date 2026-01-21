@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "../globals.css"; // Fixed import path
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -51,6 +52,7 @@ export default async function RootLayout({
               <Navbar />
               {children}
               <Footer />
+              <ScrollToTop />
             </ConfigProvider>
           </AntdRegistry>
         </NextIntlClientProvider>

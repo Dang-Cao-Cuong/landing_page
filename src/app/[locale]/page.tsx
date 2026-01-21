@@ -3,6 +3,7 @@ import { Vision } from "@/components/Vision";
 import { Pillars } from "@/components/Pillars";
 import { Solution } from "@/components/Solution";
 import { Impact } from "@/components/Impact";
+import NewsSection from "@/components/News/NewsSection";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Vision />
       <Pillars />
       <Solution />
+      <NewsSection />
       <Impact />
     </main>
   );

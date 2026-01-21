@@ -3,6 +3,7 @@
 import { Check, Layers, Database, BarChart3, Settings, ShieldCheck, Zap } from "lucide-react";
 import { Tooltip } from 'antd';
 import { useTranslations } from 'next-intl';
+import styles from '../styles/Solution.module.css';
 
 export function Solution() {
     const t = useTranslations('Solution');
@@ -26,221 +27,72 @@ export function Solution() {
     ];
 
     return (
-        <section id="solution" style={{
-            position: 'relative',
-            paddingTop: '5rem',
-            paddingBottom: '5rem',
-            background: 'var(--color-royal-blue)',
-            overflow: 'hidden'
-        }}>
-            <div style={{
-                position: 'absolute',
-                inset: 0,
-                backgroundImage: 'url("/grid-pattern.svg")',
-                opacity: 0.2,
-                pointerEvents: 'none',
-                mixBlendMode: 'overlay'
-            }} />
-            <div style={{
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                width: '600px',
-                height: '600px',
-                background: 'rgba(255, 255, 255, 0.1)',
-                borderRadius: '50%',
-                filter: 'blur(120px)',
-                pointerEvents: 'none'
-            }} />
+        <section id="solution" className={styles.solutionSection}>
+            <div className={styles.decorativeGrid} />
+            <div className={styles.decorativeCircle} />
 
-            <div style={{
-                maxWidth: '1280px',
-                margin: '0 auto',
-                padding: '0 1rem',
-                position: 'relative',
-                zIndex: 10,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '5rem'
-            }}>
+            <div className={styles.container}>
                 {/* Goals & Framework Grid */}
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr',
-                    gap: '4rem',
-                    alignItems: 'center'
-                }} className="solution-main-grid">
+                <div className={styles.mainGrid}>
                     {/* Left Column: Goals */}
                     <div>
-                        <div style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.5rem',
-                            padding: '0.25rem 0.75rem',
-                            borderRadius: '9999px',
-                            background: 'rgba(255, 255, 255, 0.1)',
-                            border: '1px solid rgba(255, 255, 255, 0.2)',
-                            color: 'white',
-                            fontSize: '0.75rem',
-                            fontWeight: 700,
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.05em',
-                            marginBottom: '1rem'
-                        }}>
-                            <span className="pulse-dot" style={{
-                                width: '0.5rem',
-                                height: '0.5rem',
-                                borderRadius: '50%',
-                                background: 'white'
-                            }} />
+                        <div className={styles.badge}>
+                            <span className={styles.pulseDot} />
                             {t('approachBadge')}
                         </div>
-                        <h2 style={{
-                            fontSize: 'clamp(1.875rem, 5vw, 2.25rem)',
-                            fontWeight: 700,
-                            marginBottom: '2rem',
-                            color: 'white'
-                        }}>
+                        <h2 className={styles.goalsTitle}>
                             {t('goalsTitle')}
                         </h2>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <div className={styles.goalsList}>
                             {goals.map((goal, idx) => (
-                                <div key={idx} className="goal-card">
-                                    <div style={{
-                                        width: '1.5rem',
-                                        height: '1.5rem',
-                                        borderRadius: '50%',
-                                        background: 'rgba(255, 255, 255, 0.1)',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexShrink: 0,
-                                        marginTop: '0.125rem'
-                                    }}>
-                                        <Check style={{ width: '0.875rem', height: '0.875rem', color: '#bfdbfe' }} />
+                                <div key={idx} className={styles.goalCard}>
+                                    <div className={styles.checkIconWrapper}>
+                                        <Check className={styles.checkIcon} />
                                     </div>
-                                    <span style={{
-                                        color: 'rgba(255, 255, 255, 0.9)',
-                                        fontWeight: 500,
-                                        lineHeight: 1.625
-                                    }}>{goal}</span>
+                                    <span className={styles.goalText}>{goal}</span>
                                 </div>
                             ))}
                         </div>
                     </div>
 
                     {/* Right Column: Framework Card */}
-                    <div className="framework-card">
-                        <div style={{
-                            position: 'absolute',
-                            inset: 0,
-                            background: 'linear-gradient(to bottom right, rgba(255, 255, 255, 0.05), transparent)',
-                            opacity: 0.5
-                        }} />
+                    <div className={styles.frameworkCard}>
+                        <div className={styles.frameworkGradient} />
 
-                        <h3 style={{
-                            fontSize: '1.5rem',
-                            fontWeight: 700,
-                            marginBottom: '2rem',
-                            position: 'relative',
-                            zIndex: 10,
-                            color: 'white',
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.75rem'
-                        }}>
+                        <h3 className={styles.frameworkHeader}>
                             {t('frameworkTitle')}
-                            <div style={{
-                                height: '1px',
-                                flex: 1,
-                                background: 'linear-gradient(to right, rgba(255, 255, 255, 0.3), transparent)'
-                            }} />
+                            <div className={styles.headerLine} />
                         </h3>
 
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '2rem',
-                            position: 'relative',
-                            zIndex: 10
-                        }}>
-                            <dl className="framework-item">
-                                <dt style={{
-                                    color: '#bfdbfe',
-                                    fontWeight: 600,
-                                    fontSize: '0.875rem',
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '0.05em',
-                                    marginBottom: '0.5rem'
-                                }}>Connectivity</dt>
-                                <dd style={{
-                                    color: 'white',
-                                    fontSize: '1.125rem',
-                                    fontWeight: 500,
-                                    margin: 0
-                                }}>OPC UA / MQTT / Modbus TCP</dd>
+                        <div className={styles.frameworkContent}>
+                            <dl className={styles.frameworkItem}>
+                                <dt className={styles.itemLabel}>{t('fwConnectivity')}</dt>
+                                <dd className={styles.itemValue}>{t('fwConnectivityValue')}</dd>
                             </dl>
-                            <dl className="framework-item">
-                                <dt style={{
-                                    color: '#bfdbfe',
-                                    fontWeight: 600,
-                                    fontSize: '0.875rem',
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '0.05em',
-                                    marginBottom: '0.5rem'
-                                }}>Data Hub</dt>
-                                <dd style={{
-                                    color: 'white',
-                                    fontSize: '1.125rem',
-                                    fontWeight: 500,
-                                    margin: 0
-                                }}>SQL Server / InfluxDB</dd>
+                            <dl className={styles.frameworkItem}>
+                                <dt className={styles.itemLabel}>{t('fwDataHub')}</dt>
+                                <dd className={styles.itemValue}>{t('fwDataHubValue')}</dd>
                             </dl>
-                            <dl className="framework-item">
-                                <dt style={{
-                                    color: '#bfdbfe',
-                                    fontWeight: 600,
-                                    fontSize: '0.875rem',
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '0.05em',
-                                    marginBottom: '0.5rem'
-                                }}>Platform</dt>
-                                <dd style={{
-                                    color: 'white',
-                                    fontSize: '1.125rem',
-                                    fontWeight: 500,
-                                    margin: 0
-                                }}>Real-time Digital Twin</dd>
+                            <dl className={styles.frameworkItem}>
+                                <dt className={styles.itemLabel}>{t('fwPlatform')}</dt>
+                                <dd className={styles.itemValue}>{t('fwPlatformValue')}</dd>
                             </dl>
                         </div>
                     </div>
                 </div>
 
                 {/* Modules Grid */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-                    <div style={{ textAlign: 'center' }}>
-                        <h2 style={{
-                            fontSize: '1.875rem',
-                            fontWeight: 700,
-                            color: 'white',
-                            marginBottom: '0.5rem'
-                        }}>
+                <div className={styles.modulesSection}>
+                    <div className={styles.modulesHeader}>
+                        <h2 className={styles.modulesTitle}>
                             {t('modulesTitle')}
                         </h2>
-                        <p style={{
-                            color: 'rgba(219, 234, 254, 0.8)',
-                            maxWidth: '42rem',
-                            margin: '0 auto'
-                        }}>
+                        <p className={styles.modulesDesc}>
                             {t('modulesDesc')}
                         </p>
                     </div>
 
-                    <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(2, 1fr)',
-                        gap: '1rem'
-                    }} className="modules-grid">
+                    <div className={styles.modulesGrid}>
                         {modules.map((mod, idx) => (
                             <Tooltip
                                 key={idx}
@@ -254,16 +106,11 @@ export function Solution() {
                                     }
                                 }}
                             >
-                                <div className="module-card">
-                                    <div className="module-icon">
-                                        <mod.icon style={{ width: '1.5rem', height: '1.5rem' }} />
+                                <div className={styles.moduleCard}>
+                                    <div className={styles.moduleIconWrapper}>
+                                        <mod.icon className={styles.moduleIcon} />
                                     </div>
-                                    <span style={{
-                                        fontSize: '0.875rem',
-                                        fontWeight: 500,
-                                        textAlign: 'center',
-                                        lineHeight: 1.25
-                                    }} className="module-text">
+                                    <span className={styles.moduleText}>
                                         {mod.name}
                                     </span>
                                 </div>
@@ -272,127 +119,6 @@ export function Solution() {
                     </div>
                 </div>
             </div>
-
-            <style jsx>{`
-                @keyframes pulse {
-                    0%, 100% { opacity: 1; }
-                    50% { opacity: 0.5; }
-                }
-
-                .pulse-dot {
-                    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-                }
-
-                .goal-card {
-                    display: flex;
-                    align-items: flex-start;
-                    gap: 1rem;
-                    padding: 1rem;
-                    border-radius: 0.75rem;
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    transition: all 0.3s ease;
-                }
-
-                .goal-card:hover {
-                    background: rgba(255, 255, 255, 0.1);
-                    border-color: rgba(255, 255, 255, 0.2);
-                }
-
-                .framework-card {
-                    position: relative;
-                    height: 100%;
-                    min-height: 450px;
-                    background: var(--color-royal-blue-dark);
-                    border-radius: 1.5rem;
-                    overflow: hidden;
-                    padding: 2rem;
-                    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                }
-
-                .framework-card:hover .framework-item {
-                    border-color: rgba(255, 255, 255, 0.5);
-                }
-
-                .framework-item {
-                    border-left: 2px solid rgba(255, 255, 255, 0.2);
-                    padding-left: 1.5rem;
-                    transition: border-color 0.3s ease;
-                }
-
-                .module-card {
-                    position: relative;
-                    background: rgba(255, 255, 255, 0.05);
-                    backdrop-filter: blur(4px);
-                    padding: 1rem;
-                    border-radius: 1rem;
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 1rem;
-                    height: 100%;
-                    justify-content: center;
-                    min-height: 140px;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                }
-
-                .module-card:hover {
-                    background: rgba(255, 255, 255, 0.2);
-                    border-color: rgba(255, 255, 255, 0.3);
-                    transform: translateY(-0.5rem);
-                }
-
-                .module-icon {
-                    width: 3rem;
-                    height: 3rem;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.1);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #bfdbfe;
-                    transition: all 0.3s ease;
-                }
-
-                .module-card:hover .module-icon {
-                    color: white;
-                    background: rgba(255, 255, 255, 0.2);
-                }
-
-                .module-text {
-                    color: #dbeafe;
-                }
-
-                .module-card:hover .module-text {
-                    color: white;
-                }
-
-                @media (min-width: 768px) {
-                    .solution-main-grid {
-                        grid-template-columns: repeat(2, 1fr) !important;
-                    }
-
-                    .modules-grid {
-                        grid-template-columns: repeat(4, 1fr) !important;
-                    }
-
-                    .framework-card {
-                        padding: 2.5rem;
-                    }
-                }
-
-                @media (min-width: 1024px) {
-                    .modules-grid {
-                        grid-template-columns: repeat(7, 1fr) !important;
-                    }
-                }
-            `}</style>
         </section>
     );
 }

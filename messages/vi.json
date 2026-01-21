@@ -2,6 +2,7 @@
     "Navbar": {
         "vision": "Tầm nhìn",
         "solution": "Giải pháp",
+        "news": "Tin tức",
         "impact": "Tác động",
         "getStarted": "Bắt đầu ngay"
     },
@@ -11,10 +12,13 @@
         "subtitle": "Biến <bold>Thời gian</bold> thành tài sản. Biến <bold>Dữ liệu</bold> thành hành động.",
         "explore": "Khám phá Giải pháp",
         "contact": "Liên hệ chúng tôi",
-        "realtime": "Giám sát Thời gian thực",
-        "efficiency": "Nâng cao Hiệu suất"
+        "floatRealTimeLabel": "Thời gian thực",
+        "floatRealTimeValue": "Giám sát",
+        "floatEfficiencyLabel": "Tăng cường",
+        "floatEfficiencyValue": "Hiệu quả"
     },
     "Vision": {
+        "badge": "Sẵn sàng cho Tương lai",
         "title": "<accent>Bối cảnh</accent> & Tầm nhìn",
         "desc1": "Trong nền sản xuất hiện đại, yếu tố cạnh tranh không còn nằm ở việc sở hữu nhiều máy móc hơn, mà ở năng lực tận dụng dữ liệu để tối ưu thời gian, nâng cao hiệu suất và gia tăng lợi nhuận.",
         "desc2": "Khi doanh nghiệp buộc phải chuyển đổi dữ liệu sản xuất thành năng suất thực tế, thời gian trở thành <bold>đơn vị tiền tệ của năng suất</bold>.",
@@ -24,7 +28,8 @@
         "list3": "Năng lượng hiệu quả hơn: Dựa trên dữ liệu thực tế",
         "list4": "Lợi nhuận bền vững hơn: Quản trị minh bạch",
         "smartFactoryTitle": "Sản xuất Thông minh",
-        "smartFactoryDesc": "Các quốc gia tiên tiến đã bước sang giai đoạn Sản xuất thông minh, nơi mỗi giây vận hành đều mang giá trị kinh tế."
+        "smartFactoryDesc": "Các quốc gia tiên tiến đã bước sang giai đoạn Sản xuất thông minh, nơi mỗi giây vận hành đều mang giá trị kinh tế.",
+        "imageAlt": "Sản xuất Thông minh"
     },
     "Pillars": {
         "badge": "Giá Trị Cốt Lõi",
@@ -50,6 +55,12 @@
         "goal4": "Tối ưu kế hoạch bảo trì & giảm downtime",
         "goal5": "Hỗ trợ ra quyết định dựa trên dữ liệu",
         "frameworkTitle": "Smart Factory Framework",
+        "fwConnectivity": "Kết nối",
+        "fwConnectivityValue": "OPC UA / MQTT / Modbus TCP",
+        "fwDataHub": "Trung tâm Dữ liệu",
+        "fwDataHubValue": "SQL Server / InfluxDB",
+        "fwPlatform": "Nền tảng",
+        "fwPlatformValue": "Real-time Digital Twin",
         "modulesTitle": "7 Module Chức Năng",
         "modulesDesc": "Các module toàn diện được thiết kế để kiểm soát toàn bộ nhà máy",
         "modCollection": "Thu thập Dữ liệu",
@@ -66,6 +77,10 @@
         "modDescMaintenance": "Cảnh báo tức thì các lỗi dừng máy hoặc sai lệch chỉ số vận hành qua Mobile/Email.",
         "modDescEnergy": "Thiết lập cấu hình hệ thống, phân quyền người dùng và quản lý danh mục thiết bị.",
         "modDescReporting": "Xuất báo cáo OEE, năng suất và chất lượng tự động với độ chính xác tuyệt đối."
+    },
+    "News": {
+        "title": "Tin Tức & Sự Kiện",
+        "viewAll": "XEM TẤT CẢ"
     },
     "Impact": {
         "title": "Tác động <accent>Chiến lược</accent>",
@@ -89,7 +104,8 @@
         "row5Direct": "Năng suất & sản lượng tăng",
         "row5Impact": "Tăng doanh thu bền vững",
         "quote": "“QWaste không chỉ là phần mềm mà là chiến lược tối ưu thời gian của doanh nghiệp sản xuất.”",
-        "quoteDesc": "Giúp doanh nghiệp <bold>NHÌN - HIỂU - HÀNH ĐỘNG</bold> trên dữ liệu thật, từ đó tăng năng suất, giảm chi phí và phát triển bền vững."
+        "quoteDesc": "Giúp doanh nghiệp <bold>NHÌN - HIỂU - HÀNH ĐỘNG</bold> trên dữ liệu thật, từ đó tăng năng suất, giảm chi phí và phát triển bền vững.",
+        "address": "Nam Kỳ Khởi Nghĩa, Định Hoà, Thủ Dầu Một, Bình Dương"
     },
     "Footer": {
         "tagline": "Biến thời gian thành tài sản, Biến dữ liệu thành hành động.",

@@ -2,6 +2,7 @@
     "Navbar": {
         "vision": "Vision",
         "solution": "Solution",
+        "news": "News",
         "impact": "Impact",
         "getStarted": "Get Started"
     },
@@ -11,10 +12,13 @@
         "subtitle": "Turn <bold>Time</bold> into asset. Turn <bold>Data</bold> into action.",
         "explore": "Explore Solution",
         "contact": "Contact Us",
-        "realtime": "Real-time Monitoring",
-        "efficiency": "Increase Efficiency"
+        "floatRealTimeLabel": "Real-time",
+        "floatRealTimeValue": "Monitoring",
+        "floatEfficiencyLabel": "Increase",
+        "floatEfficiencyValue": "Efficiency"
     },
     "Vision": {
+        "badge": "Future Ready",
         "title": "<accent>Context</accent> & Vision",
         "desc1": "In modern manufacturing, competitiveness is no longer about owning more machines, but about the ability to leverage data to optimize time, improve performance, and increase profits.",
         "desc2": "When businesses are forced to convert production data into actual productivity, time becomes <bold>the currency of productivity</bold>.",
@@ -24,7 +28,8 @@
         "list3": "More efficient energy: Based on real data",
         "list4": "More sustainable profit: Transparent management",
         "smartFactoryTitle": "Smart Manufacturing",
-        "smartFactoryDesc": "Advanced nations have moved to the Smart Manufacturing stage, where every second of operation carries economic value."
+        "smartFactoryDesc": "Advanced nations have moved to the Smart Manufacturing stage, where every second of operation carries economic value.",
+        "imageAlt": "Smart Manufacturing"
     },
     "Pillars": {
         "badge": "Core Values",
@@ -50,6 +55,12 @@
         "goal4": "Optimize maintenance plans & reduce downtime",
         "goal5": "Support data-driven decision making",
         "frameworkTitle": "Smart Factory Framework",
+        "fwConnectivity": "Connectivity",
+        "fwConnectivityValue": "OPC UA / MQTT / Modbus TCP",
+        "fwDataHub": "Data Hub",
+        "fwDataHubValue": "SQL Server / InfluxDB",
+        "fwPlatform": "Platform",
+        "fwPlatformValue": "Real-time Digital Twin",
         "modulesTitle": "7 Functional Modules",
         "modulesDesc": "Comprehensive modules designed for total factory control",
         "modCollection": "Data Collection",
@@ -66,6 +77,10 @@
         "modDescMaintenance": "Instant alerts for machine downtime or operational index deviations via Mobile/Email.",
         "modDescEnergy": "Configure system settings, user permissions, and manage device categories.",
         "modDescReporting": "Automatically export OEE, productivity, and quality reports with absolute precision."
+    },
+    "News": {
+        "title": "News & Events",
+        "viewAll": "VIEW ALL"
     },
     "Impact": {
         "title": "Strategic <accent>Impact</accent>",
@@ -89,7 +104,8 @@
         "row5Direct": "Increased productivity & output",
         "row5Impact": "Sustainable revenue increase",
         "quote": "“QWaste is not just software but a time optimization strategy for manufacturing businesses.”",
-        "quoteDesc": "Helping businesses <bold>SEE - UNDERSTAND - ACT</bold> on real data, thereby increasing productivity, reducing costs, and growing sustainably."
+        "quoteDesc": "Helping businesses <bold>SEE - UNDERSTAND - ACT</bold> on real data, thereby increasing productivity, reducing costs, and growing sustainably.",
+        "address": "Nam Ky Khoi Nghia, Dinh Hoa, Thu Dau Mot, Binh Duong"
     },
     "Footer": {
         "tagline": "Turn time into asset, Turn data into action.",

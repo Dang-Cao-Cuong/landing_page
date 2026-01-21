@@ -1,0 +1,206 @@
+/* Hero Section Styles */
+.heroContainer {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.heroContainer ::selection {
+    background-color: var(--color-blue-200);
+    color: var(--color-blue-900);
+}
+
+.blurDecoration1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 800px;
+    height: 600px;
+    background: rgba(30, 80, 225, 0.3);
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+.blurDecoration2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 600px;
+    height: 500px;
+    background: rgba(86, 120, 232, 0.25);
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+.contentWrapper {
+    max-width: 1280px;
+    position: relative;
+    z-index: 10;
+    padding: 0 1rem;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.motionContainer {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.taglineBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(30, 80, 225, 0.2);
+    font-size: 1rem;
+    color: var(--color-cobalt);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 1px 2px 0 rgba(30, 58, 138, 0.05);
+    align-self: center;
+}
+
+@media (min-width: 768px) {
+    .taglineBadge {
+        font-size: 1.125rem;
+    }
+}
+
+.pingWrapper {
+    position: relative;
+    display: flex;
+    height: 0.5rem;
+    width: 0.5rem;
+}
+
+.pingAnimation {
+    position: absolute;
+    display: inline-flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    background: #0ea5e9;
+    opacity: 0.75;
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.pingDot {
+    position: relative;
+    display: inline-flex;
+    border-radius: 50%;
+    height: 0.5rem;
+    width: 0.5rem;
+    background: var(--color-cobalt);
+}
+
+@keyframes ping {
+
+    75%,
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.heroActionButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 2rem;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .heroActionButtons {
+        flex-direction: row;
+    }
+}
+
+.heroPrimaryBtn {
+    height: auto !important;
+    padding: 1rem 2rem !important;
+    font-size: 1.125rem !important;
+    font-weight: 700 !important;
+    background: var(--color-primary) !important;
+    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4), 0 10px 10px -5px rgba(37, 99, 235, 0.15) !important;
+    transition: all 0.3s ease !important;
+}
+
+.heroPrimaryBtn:hover {
+    background: var(--color-primary-hover) !important;
+    box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.6) !important;
+    transform: scale(1.05) !important;
+}
+
+.heroSecondaryBtn {
+    height: auto !important;
+    padding: 1rem 2rem !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    border-color: rgba(29, 78, 216, 0.3) !important;
+    color: var(--color-cobalt) !important;
+    font-weight: 600 !important;
+    font-size: 1.125rem !important;
+    backdrop-filter: blur(12px) !important;
+    box-shadow: 0 4px 6px -1px rgba(30, 58, 138, 0.05) !important;
+}
+
+.heroSecondaryBtn:hover {
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.heroFloatingCard {
+    display: none;
+    position: absolute;
+    z-index: 20;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.1), 0 10px 10px -5px rgba(30, 58, 138, 0.04);
+}
+
+.heroFloatingLeft {
+    position: absolute;
+    top: 22rem;
+    left: 10%;
+}
+
+.heroFloatingRight {
+    position: absolute;
+    bottom: 20rem;
+    right: 10%;
+}
+
+@media (min-width: 1024px) {
+    .heroFloatingCard {
+        display: block;
+    }
+}
+
+.gridPattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("/grid-pattern.svg");
+    background-position: center;
+    opacity: 0.4;
+    mask-image: radial-gradient(ellipse at center, black, transparent);
+
+    /* Fallback */
+    -webkit-mask-image: radial-gradient(ellipse at center, black, transparent);
+    pointer-events: none;
+}
