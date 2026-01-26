@@ -15,15 +15,23 @@ export function ConsultationForm() {
         setStatus("submitting");
 
         try {
-            const response = await fetch('/api/consultation', {
+            const response = await fetch('/api/proxy/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(values),
+                body: JSON.stringify({
+                    contactMessageFullName: values.name,
+                    contactMessagePhoneNumber: values.phone,
+                    contactMessageEmail: values.email,
+                    message: values.message
+                }),
             });
 
             if (!response.ok) {
+                console.error('Submission failed. Status:', response.status);
+                const errorBody = await response.text();
+                console.error('Error body:', errorBody);
                 throw new Error('Failed to submit');
             }
 
