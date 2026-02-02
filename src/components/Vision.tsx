@@ -3,10 +3,88 @@
 import { Carousel, Card } from "antd";
 import { CheckCircle2, Zap } from "lucide-react";
 import { useTranslations } from 'next-intl';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import styles from '../styles/Vision.module.css';
 
 export function Vision() {
     const t = useTranslations('Vision');
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "0px", amount: 0.2 });
+
+    // Animation variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 40 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
+    const fadeInLeft = {
+        hidden: { opacity: 0, x: -60 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
+    const fadeInRight = {
+        hidden: { opacity: 0, x: 60 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
+    const scaleIn = {
+        hidden: { opacity: 0, scale: 0.8 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
+    const listItemVariants = {
+        hidden: { opacity: 0, x: -20 },
+        visible: (i: number) => ({
+            opacity: 1,
+            x: 0,
+            transition: {
+                delay: i * 0.1,
+                duration: 0.5,
+                ease: "easeOut"
+            }
+        })
+    };
 
     const slides = [
         "/work_1.jpg",
@@ -15,16 +93,24 @@ export function Vision() {
     ];
 
     return (
-        <section id="vision" className={styles.visionSection}>
+        <section id="vision" className={styles.visionSection} ref={ref}>
             {/* Decorative backgrounds */}
             <div className={styles.decorativeCircle1} />
             <div className={styles.decorativeCircle2} />
             <div className={styles.decorativeGrid} />
 
             <div className={styles.container}>
-                <div className={styles.grid}>
-                    <div className={styles.contentColumn}>
-                        <div>
+                <motion.div 
+                    className={styles.grid}
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                >
+                    <motion.div 
+                        className={styles.contentColumn}
+                        variants={fadeInLeft}
+                    >
+                        <motion.div variants={fadeInUp}>
                             <div className={styles.badge}>
                                 <span className={styles.pulseDot} />
                                 {t('badge')}
@@ -34,9 +120,12 @@ export function Vision() {
                                     accent: (chunks) => <span className={styles.accent}>{chunks}</span>
                                 })}
                             </h2>
-                        </div>
+                        </motion.div>
 
-                        <div className={styles.descriptionWrapper}>
+                        <motion.div 
+                            className={styles.descriptionWrapper}
+                            variants={fadeInUp}
+                        >
                             <p className={styles.description}>
                                 {t('desc1')}
                             </p>
@@ -45,35 +134,47 @@ export function Vision() {
                                     bold: (chunks) => <span className={styles.boldText}>{chunks}</span>
                                 })}
                             </p>
-                        </div>
+                        </motion.div>
 
                         {/* Glassmorphism Card */}
-                        <Card
-                            variant="borderless"
-                            className={styles.glassCard}
-                            styles={{ body: { padding: '2rem' } }}
-                        >
-                            <h3 className={styles.cardTitle}>
-                                <Zap className={styles.icon} style={{ color: '#fde047', fill: '#fde047' }} /> {/* yellow-300 */}
-                                {t('boxTitle')}
-                            </h3>
-                            <ul className={styles.cardList}>
-                                {[
-                                    t('list1'),
-                                    t('list2'),
-                                    t('list3'),
-                                    t('list4')
-                                ].map((item, i) => (
-                                    <li key={i} className={styles.listItem}>
-                                        <CheckCircle2 className={styles.icon} style={{ color: '#93c5fd' }} /> {/* blue-300 */}
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </Card>
-                    </div>
+                        <motion.div variants={scaleIn}>
+                            <Card
+                                variant="borderless"
+                                className={styles.glassCard}
+                                styles={{ body: { padding: '2rem' } }}
+                            >
+                                <h3 className={styles.cardTitle}>
+                                    <Zap className={styles.icon} style={{ color: '#fde047', fill: '#fde047' }} />
+                                    {t('boxTitle')}
+                                </h3>
+                                <ul className={styles.cardList}>
+                                    {[
+                                        t('list1'),
+                                        t('list2'),
+                                        t('list3'),
+                                        t('list4')
+                                    ].map((item, i) => (
+                                        <motion.li 
+                                            key={i} 
+                                            className={styles.listItem}
+                                            custom={i}
+                                            variants={listItemVariants}
+                                            initial="hidden"
+                                            animate={isInView ? "visible" : "hidden"}
+                                        >
+                                            <CheckCircle2 className={styles.icon} style={{ color: '#93c5fd' }} />
+                                            <span>{item}</span>
+                                        </motion.li>
+                                    ))}
+                                </ul>
+                            </Card>
+                        </motion.div>
+                    </motion.div>
 
-                    <div className={styles.carouselGroup}>
+                    <motion.div 
+                        className={styles.carouselGroup}
+                        variants={fadeInRight}
+                    >
                         {/* Glow effect */}
                         <div className={styles.carouselGlow} />
 
@@ -105,8 +206,8 @@ export function Vision() {
                                 ))}
                             </Carousel>
                         </div>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );

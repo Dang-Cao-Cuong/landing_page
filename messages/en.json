@@ -76,7 +76,8 @@
         "modDescOptimization": "Seamless synchronization of information flow between the production floor (OT) and management level (IT).",
         "modDescMaintenance": "Instant alerts for machine downtime or operational index deviations via Mobile/Email.",
         "modDescEnergy": "Configure system settings, user permissions, and manage device categories.",
-        "modDescReporting": "Automatically export OEE, productivity, and quality reports with absolute precision."
+        "modDescReporting": "Automatically export OEE, productivity, and quality reports with absolute precision.",
+        "dragToScroll": "Drag to scroll"
     },
     "News": {
         "title": "News & Events",
@@ -109,9 +110,14 @@
     },
     "Footer": {
         "tagline": "Turn time into asset, Turn data into action.",
+        "description": "Comprehensive digital transformation solution for smart factories, optimizing efficiency and enhancing competitiveness.",
         "solution": "Solution",
         "company": "Company",
         "contact": "Contact",
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address",
+        "addressValue": "Nam Ky Khoi Nghia, Dinh Hoa, Thu Dau Mot, Binh Duong",
         "rights": "© {year} QWaste Digital Factory. All rights reserved.",
         "about": "About Us",
         "careers": "Careers"

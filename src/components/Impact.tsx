@@ -4,10 +4,40 @@ import { Check } from "lucide-react";
 import { Table, Card } from "antd";
 import { ConsultationForm } from "./ConsultationForm";
 import { useTranslations } from 'next-intl';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import styles from '../styles/Impact.module.css';
 
 export function Impact() {
     const t = useTranslations('Impact');
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "0px", amount: 0.2 });
+
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 40 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as any } }
+    };
+
+    const fadeInScale = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: { opacity: 1, scale: 1, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as any } }
+    };
+
+    const staggerContainer = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: (i: number) => ({
+            opacity: 1,
+            y: 0,
+            transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" as any }
+        })
+    };
+
     const data = [
         { factor: t('row1Factor'), direct: t('row1Direct'), impact: t('row1Impact') },
         { factor: t('row2Factor'), direct: t('row2Direct'), impact: t('row2Impact') },
@@ -17,12 +47,17 @@ export function Impact() {
     ];
 
     return (
-        <section id="impact" className={styles.section}>
+        <section id="impact" className={styles.section} ref={ref}>
             {/* Noise/Grid Pattern Overlay */}
             <div className={styles.gridPattern} />
 
             <div className={styles.container}>
-                <div className={styles.header}>
+                <motion.div 
+                    className={styles.header}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    variants={fadeInUp}
+                >
                     <h2 className={styles.title}>
                         {t.rich('title', {
                             accent: (chunks) => <span style={{ color: 'var(--color-cobalt)' }}>{chunks}</span>
@@ -31,10 +66,15 @@ export function Impact() {
                     <p className={styles.subtitle}>
                         {t('subtitle')}
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Desktop Table */}
-                <div className={styles.desktopTable}>
+                <motion.div 
+                    className={styles.desktopTable}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    variants={fadeInScale}
+                >
                     <Table
                         dataSource={data}
                         pagination={false}
@@ -68,12 +108,22 @@ export function Impact() {
                             },
                         ]}
                     />
-                </div>
+                </motion.div>
 
                 {/* Mobile Cards */}
-                <div className={styles.mobileCards}>
+                <motion.div 
+                    className={styles.mobileCards}
+                    variants={staggerContainer}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                >
                     {data.map((row, idx) => (
-                        <div key={idx} className={styles.mobileCardWrapper}>
+                        <motion.div 
+                            key={idx} 
+                            className={styles.mobileCardWrapper}
+                            custom={idx}
+                            variants={cardVariants}
+                        >
                             <Card
                                 className={styles.mobileCard}
                                 styles={{ body: { padding: '1.5rem' } }}
@@ -95,11 +145,16 @@ export function Impact() {
                                     </div>
                                 </div>
                             </Card>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
-                <div className={styles.ctaSection}>
+                <motion.div 
+                    className={styles.ctaSection}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    variants={fadeInUp}
+                >
                     <div className={styles.ctaGradient} />
                     <div className={styles.ctaContent}>
                         <h3 className={styles.ctaTitle}>
@@ -131,7 +186,7 @@ export function Impact() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

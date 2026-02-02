@@ -3,10 +3,39 @@
 import { Clock, Gauge, DollarSign, Trophy, TrendingUp } from "lucide-react";
 import { Card } from "antd";
 import { useTranslations } from 'next-intl';
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import styles from '../styles/Pillars.module.css';
 
 export function Pillars() {
     const t = useTranslations('Pillars');
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "0px", amount: 0.2 });
+
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 40 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as any } }
+    };
+
+    const staggerContainer = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } }
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 50, scale: 0.9 },
+        visible: (i: number) => ({
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                delay: i * 0.1,
+                duration: 0.6,
+                ease: [0.22, 1, 0.36, 1] as any
+            }
+        })
+    };
 
     const pillars = [
         { icon: Clock, title: t('time'), desc: t('timeDesc') },
@@ -17,11 +46,16 @@ export function Pillars() {
     ];
 
     return (
-        <section id="pillars" className={styles.pillarsSection}>
+        <section id="pillars" className={styles.pillarsSection} ref={ref}>
             <div className={styles.backgroundGrid} />
 
             <div className={styles.container}>
-                <div className={styles.header}>
+                <motion.div 
+                    className={styles.header}
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    variants={fadeInUp}
+                >
                     <div className={styles.badge}>
                         {t('badge')}
                     </div>
@@ -31,15 +65,25 @@ export function Pillars() {
                     <p className={styles.subtitle}>
                         {t('subtitle')}
                     </p>
-                </div>
+                </motion.div>
 
                 <div className={styles.contentWrapper}>
                     {/* Connecting line */}
                     <div className={styles.connectingLine} />
 
-                    <div className={styles.grid}>
+                    <motion.div 
+                        className={styles.grid}
+                        variants={staggerContainer}
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                    >
                         {pillars.map((item, index) => (
-                            <div key={index} className={styles.cardWrapper}>
+                            <motion.div 
+                                key={index} 
+                                className={styles.cardWrapper}
+                                custom={index}
+                                variants={cardVariants}
+                            >
                                 <Card
                                     hoverable
                                     variant="borderless"
@@ -75,9 +119,9 @@ export function Pillars() {
                                         </p>
                                     </div>
                                 </Card>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

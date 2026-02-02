@@ -4,22 +4,27 @@
     left: 0;
     right: 0;
     z-index: 50;
-    transition: all 0.3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(12px);
-
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 1px solid rgba(30, 80, 225, 0.15);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px) saturate(180%);
+    box-shadow: 0 2px 8px rgba(30, 80, 225, 0.04);
 }
 
 .scrolled {
-    padding: 0.75rem 0;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px) saturate(200%);
+    border-bottom-color: rgba(30, 80, 225, 0.2);
+    box-shadow: 
+        0 4px 12px rgba(30, 80, 225, 0.08),
+        0 2px 4px rgba(30, 80, 225, 0.04);
 }
 
 .container {
-    max-width: 1280px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 3rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -70,23 +75,50 @@
     color: var(--color-zinc-600);
     font-weight: 500;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #1e50e1, #5678e8);
+    transition: width 0.3s ease;
 }
 
 .navLink:hover {
     color: var(--color-cobalt);
 }
 
+.navLink:hover::after {
+    width: 100%;
+}
+
 .ctaButton {
     font-weight: 700 !important;
     height: auto !important;
     padding: 0.5rem 1.5rem !important;
-    box-shadow: 0 10px 15px -3px rgba(30, 80, 225, 0.2) !important;
-    transition: transform 0.3s ease !important;
+    background: linear-gradient(135deg, #1e50e1 0%, #2d5fe5 100%) !important;
+    border: none !important;
+    box-shadow: 
+        0 4px 12px rgba(30, 80, 225, 0.25),
+        0 2px 4px rgba(30, 80, 225, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .ctaButton:hover {
-    transform: scale(1.05) !important;
+    background: linear-gradient(135deg, #2557e8 0%, #3a66e8 100%) !important;
+    transform: translateY(-2px) scale(1.03) !important;
+    box-shadow: 
+        0 8px 20px rgba(30, 80, 225, 0.3),
+        0 4px 8px rgba(30, 80, 225, 0.2),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15) !important;
 }
 
 .mobileToggle {

@@ -52,7 +52,7 @@
 .container {
     max-width: 85%;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 3rem;
     position: relative;
     z-index: 10;
 }

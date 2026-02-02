@@ -76,7 +76,8 @@
         "modDescOptimization": "Đồng bộ hóa luồng thông tin giữa tầng sản xuất (OT) và tầng quản trị (IT) không gián đoạn.",
         "modDescMaintenance": "Cảnh báo tức thì các lỗi dừng máy hoặc sai lệch chỉ số vận hành qua Mobile/Email.",
         "modDescEnergy": "Thiết lập cấu hình hệ thống, phân quyền người dùng và quản lý danh mục thiết bị.",
-        "modDescReporting": "Xuất báo cáo OEE, năng suất và chất lượng tự động với độ chính xác tuyệt đối."
+        "modDescReporting": "Xuất báo cáo OEE, năng suất và chất lượng tự động với độ chính xác tuyệt đối.",
+        "dragToScroll": "Kéo để xem thêm"
     },
     "News": {
         "title": "Tin Tức & Sự Kiện",
@@ -109,9 +110,14 @@
     },
     "Footer": {
         "tagline": "Biến thời gian thành tài sản, Biến dữ liệu thành hành động.",
+        "description": "Giải pháp chuyển đổi số toàn diện cho nhà máy thông minh, tối ưu hóa hiệu suất và nâng cao năng lực cạnh tranh.",
         "solution": "Giải pháp",
         "company": "Công ty",
         "contact": "Liên hệ",
+        "email": "Email",
+        "phone": "Điện thoại",
+        "address": "Địa chỉ",
+        "addressValue": "Nam Kỳ Khởi Nghĩa, Định Hòa, Thủ Dầu Một, Bình Dương",
         "rights": "© {year} QWaste Digital Factory. All rights reserved.",
         "about": "Về chúng tôi",
         "careers": "Tuyển dụng"

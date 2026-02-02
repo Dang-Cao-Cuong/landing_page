@@ -9,21 +9,41 @@ export const colors = {
     primary: '#1e50e1',
     primaryHover: '#153bb5',
     primaryLight: '#5678e8',
+    primaryLighter: '#93BBFD',
+    primaryDarker: '#0d2a8a',
     cobalt: '#1D4ED8',
+
+    // Accent Colors (Complementary & Triadic)
+    accentOrange: '#EA580C',
+    accentOrangeLight: '#FB923C',
+    accentPurple: '#8B5CF6',
+    accentPurpleLight: '#A78BFA',
+    accentCyan: '#06B6D4',
+    accentCyanLight: '#22D3EE',
+    accentAmber: '#F59E0B',
+    accentRose: '#F43F5E',
 
     // Background Colors
     bgSurface: '#F0F4FF',
+    bgSurfaceAlt: '#F5F9FF',
     bgCard: '#FFFFFF',
     bgSoft: '#F8FAFC',
+    bgGradientLight: '#FAFBFF',
     darkNavy: '#0B1B45',
     sectionDark: '#0B1B45',
     sectionLight: '#F0F4FF',
     footer: '#0B1B45',
 
-    // Blue Palette
+    // Blue Palette (Extended)
     blue50: '#EFF6FF',
     blue100: '#DBEAFE',
     blue200: '#BFDBFE',
+    blue300: '#93BBFD',
+    blue400: '#60A5FA',
+    blue500: '#3B82F6',
+    blue600: '#2563EB',
+    blue700: '#1D4ED8',
+    blue800: '#1E3A8A',
     blue900: '#1e3a8a',
     blue950: '#172554',
     royalBlue: '#004094',
@@ -59,9 +79,19 @@ export const colors = {
     textTitle: '#FFFFFF',
     textBody: '#E2E8F0',
 
-    // Gradients (for reference)
+    // Gradient Definitions
     gradientStart: '#1e50e1',
+    gradientMid: '#4565e5',
     gradientEnd: '#5678e8',
+    gradientLight: '#93BBFD',
+    
+    // Visual Effects
+    shadowBlue: 'rgba(30, 80, 225, 0.15)',
+    shadowBlueMd: 'rgba(30, 80, 225, 0.2)',
+    shadowBlueLg: 'rgba(30, 80, 225, 0.25)',
+    glowBlue: 'rgba(30, 80, 225, 0.5)',
+    overlayLight: 'rgba(255, 255, 255, 0.8)',
+    overlayDark: 'rgba(11, 27, 69, 0.7)',
 } as const;
 
 /**
@@ -73,12 +103,26 @@ export const getCSSVariables = () => ({
     '--color-primary': colors.primary,
     '--color-primary-hover': colors.primaryHover,
     '--color-primary-light': colors.primaryLight,
+    '--color-primary-lighter': colors.primaryLighter,
+    '--color-primary-darker': colors.primaryDarker,
     '--color-cobalt': colors.cobalt,
+
+    // Accent Colors
+    '--color-accent-orange': colors.accentOrange,
+    '--color-accent-orange-light': colors.accentOrangeLight,
+    '--color-accent-purple': colors.accentPurple,
+    '--color-accent-purple-light': colors.accentPurpleLight,
+    '--color-accent-cyan': colors.accentCyan,
+    '--color-accent-cyan-light': colors.accentCyanLight,
+    '--color-accent-amber': colors.accentAmber,
+    '--color-accent-rose': colors.accentRose,
 
     // Background Colors
     '--color-bg-surface': colors.bgSurface,
+    '--color-bg-surface-alt': colors.bgSurfaceAlt,
     '--color-bg-card': colors.bgCard,
     '--color-bg-soft': colors.bgSoft,
+    '--color-bg-gradient-light': colors.bgGradientLight,
     '--color-dark-navy': colors.darkNavy,
     '--color-bg-section-dark': colors.sectionDark,
     '--color-bg-section-light': colors.sectionLight,
@@ -88,6 +132,12 @@ export const getCSSVariables = () => ({
     '--color-blue-50': colors.blue50,
     '--color-blue-100': colors.blue100,
     '--color-blue-200': colors.blue200,
+    '--color-blue-300': colors.blue300,
+    '--color-blue-400': colors.blue400,
+    '--color-blue-500': colors.blue500,
+    '--color-blue-600': colors.blue600,
+    '--color-blue-700': colors.blue700,
+    '--color-blue-800': colors.blue800,
     '--color-blue-900': colors.blue900,
     '--color-blue-950': colors.blue950,
     '--color-royal-blue': colors.royalBlue,

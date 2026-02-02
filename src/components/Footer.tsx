@@ -25,43 +25,58 @@ export function Footer() {
                     <p className={styles.tagline}>
                         {t.rich('tagline')}
                     </p>
+                    <p className={styles.description}>
+                        {t('description')}
+                    </p>
                 </div>
 
-                <div>
-                    <h3 className={styles.columnHeading}>{t('solution')}</h3>
-                    <ul className={styles.linkList}>
-                        <li>
-                            <a href="#" className={styles.link}>Digital Factory</a>
-                        </li>
-                        <li>
-                            <a href="#" className={styles.link}>Smart Monitoring</a>
-                        </li>
-                        <li>
-                            <a href="#" className={styles.link}>OEE Optimization</a>
-                        </li>
-                    </ul>
+                <div className={styles.linksColumn}>
+                    <div>
+                        <h3 className={styles.columnHeading}>{t('solution')}</h3>
+                        <ul className={styles.linkList}>
+                            <li>
+                                <a href="#solution" className={styles.link}>Digital Factory</a>
+                            </li>
+                            <li>
+                                <a href="#solution" className={styles.link}>Smart Monitoring</a>
+                            </li>
+                            <li>
+                                <a href="#solution" className={styles.link}>OEE Optimization</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 className={styles.columnHeading}>{t('company')}</h3>
+                        <ul className={styles.linkList}>
+                            <li>
+                                <a href="#vision" className={styles.link}>{t('about')}</a>
+                            </li>
+                            <li>
+                                <a href="#contact" className={styles.link}>{t('contact')}</a>
+                            </li>
+                            <li>
+                                <a href="#" className={styles.link}>{t('careers')}</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div>
-                    <h3 className={styles.columnHeading}>{t('company')}</h3>
-                    <ul className={styles.linkList}>
-                        <li>
-                            <a href="#" className={styles.link}>{t('about')}</a>
-                        </li>
-                        <li>
-                            <a href="#" className={styles.link}>{t('contact')}</a>
-                        </li>
-                        <li>
-                            <a href="#" className={styles.link}>{t('careers')}</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
+                <div className={styles.contactColumn}>
                     <h3 className={styles.columnHeading}>{t('contact')}</h3>
-                    <ul className={styles.linkList}>
-                        <li>info@qwaste.com</li>
-                        <li>(+84) 123 456 789</li>
+                    <ul className={styles.contactList}>
+                        <li>
+                            <strong>{t('email')}:</strong>
+                            <a href="mailto:info@qwaste.com" className={styles.contactLink}>info@qwaste.com</a>
+                        </li>
+                        <li>
+                            <strong>{t('phone')}:</strong>
+                            <a href="tel:+84123456789" className={styles.contactLink}>(+84) 123 456 789</a>
+                        </li>
+                        <li>
+                            <strong>{t('address')}:</strong>
+                            <span>{t('addressValue')}</span>
+                        </li>
                     </ul>
                 </div>
             </div>

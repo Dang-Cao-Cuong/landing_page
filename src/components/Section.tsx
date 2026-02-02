@@ -35,9 +35,9 @@ export function Section({ id, className, children, bg = "dark" }: SectionProps) 
             className={className}
         >
             <div style={{
-                maxWidth: '1280px',
+                maxWidth: '1400px',
                 margin: '0 auto',
-                padding: '0 1rem',
+                padding: '0 3rem',
                 zIndex: 10,
                 position: 'relative'
             }}>
